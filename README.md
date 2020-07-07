@@ -1,4 +1,2 @@
 # gunnpeeps.github.io
-We wanted to make something.
-
-Here we are.
+Gunnpeeps hopefully will be a quick website for our friend group. haha github go brrrr
