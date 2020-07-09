@@ -1,0 +1,36 @@
+/* Slider */
+/* slider area */
+.slider-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* slider */
+.slider {
+  list-style: none;
+  display: block;
+}
+
+/* slider images (slides) */
+.slider>img {
+  position: absolute;
+  float: left;
+  z-index: -100;
+  min-width: 100vw;
+  min-height: 100vh;
+  filter: brightness(70%);
+}
+
+/* title */
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: capitalize;
+  font-size: 5rem;
+  color: white;
+}

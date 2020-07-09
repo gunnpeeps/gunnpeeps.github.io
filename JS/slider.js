@@ -4,7 +4,7 @@ class Slider {
 
         this.currSlide = 1;
 
-        this.slides = $(`.${sliderClass} > img`);
+        this.slides = $(`.${sliderClass}>img`);
         this.resetMargins();
 
         let interval = setInterval(() => {
@@ -35,7 +35,7 @@ class Slider {
         this.slides.animate({
             marginLeft: "-=100vw"
         }, 2000);
-        
+
     }
 }
 

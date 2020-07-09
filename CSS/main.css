@@ -1,0 +1,23 @@
+/* Everything */
+:root {
+  /* colors */
+  --greenrgb: 10, 158, 88;
+  --green: rgb(var(--greenrgb));
+  --liverrgb: 102, 78, 76;
+  --liver: rgb(var(--liverrgb));
+  --flaxrgb: 226, 213, 139;
+  --flax: rgb(var(--flaxrgb));
+  --champagnergb: 255, 220, 160;
+  --champagne: rgb(var(--champagnergb));
+  --apricotrgb: 250, 210, 280;
+  --apricot: rgb(var(--apricotrgb));
+  /* lengths */
+  --navh: 6rem;
+  --navfs: 1.7rem;
+  --datenavw: 15vw;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}

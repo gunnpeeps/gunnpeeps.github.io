@@ -1,0 +1,39 @@
+/* Navigation Bar */
+/* full bar */
+.nav-bar {
+  background: linear-gradient(rgba(0, 0, 0, 255), 20%, rgba(0, 0, 0, 0));
+  position: fixed;
+  width: 100vw;
+  z-index: 2;
+}
+
+/* list of options */
+.nav-list {
+  display: flex;
+  list-style: none;
+}
+
+/* option divs */
+.nav-option {
+  padding: 0rem 2rem;
+  height: var(--navh);
+  font-size: var(--navfs);
+  line-height: var(--navh);
+  color: white;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.nav-option:hover {
+  color: var(--champagne);
+}
+
+/* selected option */
+.selected {
+  color: var(--champagne);
+}
+
+/* links for option divs */
+.nav-list>li>a {
+  text-decoration: none;
+}
