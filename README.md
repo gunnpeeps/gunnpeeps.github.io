@@ -1,4 +1,2 @@
 # gunnpeeps.github.io
-This is the PEEPS official thing.
-
-change
+Gunnpeeps hopefully will be a quick website for our friend group. haha github go brrrr
