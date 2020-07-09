@@ -2,42 +2,33 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <title>Gunn Peeps</title>
   <meta charset="utf-8">
+
+  <!-- Todo: Favicon -->
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="CSS/style.css">
+
+  <!-- JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- JS -->
+  <script src="JS/slider.js"></script>
+
 </head>
 
 <body>
-  <div class="slider">
-    <ul>
-      <li class="slide"><img src="./Slider Images/085_blursed.png" alt="Slide 1" /></li>
-      <li class="slide"><img src="./Slider Images/Profile.png" alt="Slide 2" /></li>
-      <li class="slide"><img src="./Slider Images/085_blursed.png" alt="Slide 1" /></li>
-    </ul>
+
+  <div class="slider-container">
+    <div class="slider slider-1">
+      <img src="./Images/trump.png" alt="Slide 2" />
+      <img src="./Images/OMETH.png" alt="Slide 3" />
+      <img src="./Images/trump.png" alt="Slide 2" />
+    </div>
   </div>
 
-  <script>
-    $(function() {
-
-      var slideUl = $(".slider>ul");
-      var slides = slideUl.find(".slide");
-      var currSlide = 1;
-
-      var interval = setInterval(function() {
-        currSlide++;
-        slides.animate({
-          marginLeft: "-=100vw"
-        }, 1000);
-        if (currSlide == slides.length) {
-          currSlide = 1;
-          slides.animate({
-            marginLeft: "0vw"
-          }, 0);
-        }
-      }, 5000);
-
-    });
-  </script>
 </body>
 
 </html>

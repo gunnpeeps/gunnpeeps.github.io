@@ -5,20 +5,22 @@
   font-size: 10px;
 }
 
-.slider {
+.slider-container {
   width: 100vw;
   height: 50vh;
+  position: relative;
   overflow: hidden;
 }
 
-.slider ul {
+.slider {
   list-style: none;
   display: block;
-  width: 200vw;
+  width: 100vw;
   height: 50vh;
 }
 
-.slider img {
+.slider > img {
+  position: absolute;
   float: left;
   width: 100vw;
 }
