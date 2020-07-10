@@ -12,12 +12,19 @@
   --apricotrgb: 250, 210, 280;
   --apricot: rgb(var(--apricotrgb));
   /* lengths */
-  --navh: 6rem;
+  --navh: 10rem;
   --navfs: 1.7rem;
-  --datenavw: 15vw;
 }
 
 * {
   padding: 0;
   margin: 0;
+}
+
+#sign-in-google {
+  position: fixed;
+  z-index: 2;
+  top: calc(var(--navh) / 2);
+  left: 100%;
+  transform: translate(calc(-100% - var(--navh) / 2), -50%);
 }
