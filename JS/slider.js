@@ -36,7 +36,6 @@ class Slider {
 
         if (this.currSlide >= this.slides.length) {
             this.currSlide = 1;
-
             this.resetMargins();
         }
 

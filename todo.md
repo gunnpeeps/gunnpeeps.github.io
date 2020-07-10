@@ -6,4 +6,4 @@
 
 #### Roguer do this
 * Figure out how to use Vuetify (vuet)-E-fEE
-* Figure out better slides :O
+* Make better slides :O
