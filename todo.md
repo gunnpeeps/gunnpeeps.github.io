@@ -6,3 +6,4 @@ Little dot things for sliders and arrow
 
 #### Roguer do this
 Figure out how to use Vuetify (vuet)-E-fEE
+Figure out better slides :O
