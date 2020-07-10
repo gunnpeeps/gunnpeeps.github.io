@@ -3,8 +3,8 @@ class Slider {
     constructor(sliderClass){
 
         this.currSlide = 1;
-        this.timeBetweenSlides = 8000;
-        this.slideTime = 2500;
+        this.timeBetweenSlides = 3000;
+        this.slideTime = 1000;
 
         this.slides = $(`.${sliderClass}>img`);
         this.resetMargins();
@@ -24,6 +24,14 @@ class Slider {
         }
     }
 
+    setMargins() {
+        for (let i = 0; i < this.slides.length; i++) {
+            this.slides.eq(i).animate({
+                marginLeft: ((i - this.currSlide) * 100) + "vw"
+            }, this.slideTime)
+        }
+    }
+
     nextSlide(){
 
         if (this.currSlide >= this.slides.length) {
@@ -32,13 +40,11 @@ class Slider {
             this.resetMargins();
         }
 
+        this.setMargins();
         this.currSlide++;
 
-        this.slides.animate({
-            marginLeft: "-=100vw"
-        }, this.slideTime);
-
     }
+
 }
 
 let slider1;
