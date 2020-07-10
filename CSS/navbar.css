@@ -18,6 +18,7 @@
   padding: 0rem 2rem;
   height: var(--navh);
   font-size: var(--navfs);
+  font-family: 'Source Sans Pro', sans-serif;
   line-height: var(--navh);
   color: white;
   text-transform: uppercase;

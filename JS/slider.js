@@ -3,13 +3,15 @@ class Slider {
     constructor(sliderClass){
 
         this.currSlide = 1;
+        this.timeBetweenSlides = 8000;
+        this.slideTime = 2500;
 
         this.slides = $(`.${sliderClass}>img`);
         this.resetMargins();
 
         let interval = setInterval(() => {
             this.nextSlide();
-        }, 5000);
+        }, this.timeBetweenSlides);
 
         return this;
     }
@@ -34,7 +36,7 @@ class Slider {
 
         this.slides.animate({
             marginLeft: "-=100vw"
-        }, 2000);
+        }, this.slideTime);
 
     }
 }

@@ -1,10 +1,10 @@
 /* Slider */
 /* slider area */
 .slider-container {
+  margin: auto;
   width: 100vw;
   height: 100vh;
   position: relative;
-  overflow: hidden;
   z-index: 1;
 }
 
@@ -12,6 +12,7 @@
 .slider {
   list-style: none;
   display: block;
+  overflow: hidden;
 }
 
 /* slider images (slides) */
@@ -19,18 +20,36 @@
   position: absolute;
   float: left;
   z-index: -100;
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   filter: brightness(70%);
+}
+
+/* title and subtitle */
+.title-container {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
 }
 
 /* title */
 .title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-transform: capitalize;
   font-size: 5rem;
-  color: white;
+  margin: 1rem;
+  font-family: 'Bungee', cursive;
+  display: block;
+  text-transform: uppercase;
+}
+
+/* subtitle */
+.subtitle {
+  font-size: 2rem;
+  margin: 1rem;
+  font-family: 'Merienda One', cursive;
+  display: block;
+  text-transform: capitalize;
 }
