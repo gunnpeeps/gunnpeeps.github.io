@@ -1,11 +1,11 @@
 class Slider {
   constructor(sliderClass) {
 
-    this.currSlide = 2;
     this.timeBetweenSlides = 8000;
     this.slideTime = 1000;
 
     this.slides = $(`.${sliderClass}>img`);
+    this.currSlide = Math.floor(this.slides.length * Math.random());
     this.setMargins(this.currSlide);
 
     setInterval(() => {
