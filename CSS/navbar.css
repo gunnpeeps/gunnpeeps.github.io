@@ -15,7 +15,7 @@
 
 /* option divs */
 .nav-option {
-  padding: 0rem calc(var(--navh) / 2);
+  padding: 0rem 3vw;
   height: var(--navh);
   font-size: var(--navfs);
   font-family: 'Source Sans Pro', sans-serif;
@@ -23,6 +23,7 @@
   color: white;
   text-transform: uppercase;
   transition: color 0.3s;
+  font-size: 20px;
 }
 
 .nav-option:hover {
@@ -37,4 +38,12 @@
 /* links for option divs */
 .nav-list>li>a {
   text-decoration: none;
+}
+
+#header-logo {
+  position: fixed;
+  z-index: 5;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%,-50%);
 }
