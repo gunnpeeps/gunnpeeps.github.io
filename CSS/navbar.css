@@ -4,7 +4,7 @@
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
   position: fixed;
   width: 100vw;
-  z-index: 2;
+  z-index: 1;
 }
 
 /* list of options */

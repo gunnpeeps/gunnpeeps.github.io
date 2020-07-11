@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   position: relative;
-  z-index: 1;
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -20,7 +20,6 @@
 .slider>img {
   position: absolute;
   float: left;
-  z-index: -100;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
@@ -53,4 +52,44 @@
   font-family: 'Merienda One', cursive;
   display: block;
   text-transform: capitalize;
+}
+
+/* arrows */
+.arr {
+  z-index: 1;
+}
+
+.left-arr {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(50px, -50%);
+}
+
+.left-arr:hover {
+  animation: leftArr 1s infinite;
+}
+
+.right-arr {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50px, -50%);
+}
+
+.right-arr:hover {
+  animation: rightArr 1s infinite;
+  transition: transform 0.5s;
+}
+
+@keyframes leftArr {
+  50% {
+    transform: translate(30px, -50%);
+  }
+}
+
+@keyframes rightArr {
+  50% {
+    transform: translate(-30px, -50%);
+  }
 }

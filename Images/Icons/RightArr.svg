@@ -1,4 +1,18 @@
-<svg width="500" height="500" viewBox="0 0 1076 675" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="200" y="420" width="347" height="29" rx="14.5" transform="rotate(50 200 420)" fill="#FFFFFF"/>
-  <rect x="220" y="400" width="347" height="29" rx="14.5" transform="rotate(-50 220 400)" fill="#FFFFFF"/>
+<svg width="75" height="150" viewBox="0 0 200 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect
+    x="175"
+    y="250"
+    width="300"
+    height="20"
+    rx="14.5"
+    transform="rotate(-130 185 260)"
+    fill="#FFFFFF"/>
+  <rect
+    x="175"
+    y="250"
+    width="300"
+    height="20"
+    rx="14.5"
+    transform="rotate(130 185 260)"
+    fill="#FFFFFF"/>
 </svg>
