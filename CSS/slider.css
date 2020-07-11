@@ -96,6 +96,6 @@
 
 @keyframes rightArr {
   50% {
-    transform: translate(-30px, -50%);
+    transform: translate(-30px, -50%) rotate(180deg);
   }
 }
