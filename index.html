@@ -22,6 +22,7 @@
   <!-- font-family: 'Bungee', cursive; -->
   <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 
+  <link rel="icon" type="image/png" href="Images/Favicon.png">
 
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="CSS/main.css">
@@ -30,7 +31,8 @@
 
   <!-- Metas -->
   <!--meta name="google-signin-scope" content="profile email"-->
-  <meta name="google-signin-client_id" content="760625180157-urki85i1c7u00coqe32g7hc372a5rk4t.apps.googleusercontent.com">
+  <meta name="google-signin-client_id"
+    content="760625180157-urki85i1c7u00coqe32g7hc372a5rk4t.apps.googleusercontent.com">
 
   <script>
 
@@ -39,51 +41,63 @@
   <!-- Frameworks -->
   <!-- JQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Google API -->
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
   <!-- Vue -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
   <!-- Vuetify -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.4/vuetify.min.js"></script>
 
   <!-- JS -->
-  <script src="JS/slider.js"></script>
   <script src="JS/google-config.js"></script>
+  <script src="JS/slider.js"></script>
+  <script src="JS/menu.js"></script>
 
 </head>
 
 <body>
 
-  <!-- navigation bar -->
   <div class="nav-bar">
+
     <ul class="nav-list">
       <li>
+        <div class="nav-option menu-icon-wrapper">
+          <img id="menu-icon" src="Images/Icons/Menu.png" alt="Menu">
+        </div>
+      </li>
+      <li>
         <a href="">
-          <div class="nav-option selected">home
+          <div hidden class="nav-option selected">HOME
           </div>
         </a>
       </li>
       <li>
         <a href="">
-          <div class="nav-option">forum
+          <div hidden class="nav-option">ANNOUNCEMENTS
           </div>
         </a>
       </li>
       <li>
         <a href="">
-          <div class="nav-option">cool stuff
+          <div hidden class="nav-option">FORUM
           </div>
         </a>
       </li>
       <li>
         <a href="">
-          <div class="nav-option">hi
+          <div hidden class="nav-option">COOL STUFF
           </div>
         </a>
       </li>
     </ul>
   </div>
 
+
+  <a href="./"><img id="header-logo" src="Images/Logo.png" alt="GP"></a>
+
+  <div id="sign-in-google"></div>
+
   <div class="slider-container">
-    <!-- slider images -->
     <div class="slider slider-1">
       <img src="./Images/Slider Images/ConcertPhoto1.jpg" alt="Slide 0" />
       <img src="./Images/Slider Images/Congrats.png" alt="Slide 1" />
@@ -93,18 +107,14 @@
       <img src="./Images/Slider Images/Woofles.jpg" alt="Slide 5" />
       <img src="./Images/Slider Images/ConcertPhoto1.jpg" alt="Slide 0" />
     </div>
-    <!-- title and subtitle -->
     <div class="title-container">
       <div class="title">gunn peeps</div>
       <div class="subtitle">where time is wasted</div>
     </div>
-    <!-- arrows -->
-    <img class="arr left-arr" src="Images/Icons/LeftArr.svg" alt="Left Arrow">
-    <img class="arr right-arr" src="Images/Icons/RightArr.svg" alt="Right Arrow">
   </div>
 
-  <!-- sign in with google -->
-  <div id="sign-in-google" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+  <img class="slider-arrow left-arr" src="Images/Icons/Arr.svg" alt="Left Arrow">
+  <img class="slider-arrow right-arr" src="Images/Icons/Arr.svg" alt="Right Arrow">
 
 </body>
 
