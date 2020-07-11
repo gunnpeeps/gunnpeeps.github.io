@@ -48,37 +48,51 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.4/vuetify.min.js"></script>
 
   <!-- JS -->
-  <script src="JS/slider.js"></script>
   <script src="JS/google-config.js"></script>
+  <script src="JS/slider.js"></script>
+  <script src="JS/menu.js"></script>
 
 </head>
 
 <body>
 
   <div class="nav-bar">
+    
     <ul class="nav-list">
       <li>
+        <div class="nav-option menu-icon-wrapper">
+          <img id="menu-icon" src="Images/Icons/Menu.png" alt="Menu">
+        </div>
+      </li>
+      <li>
         <a href="">
-          <div class="nav-option selected">home
+          <div hidden class="nav-option selected">HOME
           </div>
         </a>
       </li>
       <li>
         <a href="">
-          <div class="nav-option">forum
+          <div hidden class="nav-option">ANNOUNCEMENTS
           </div>
         </a>
       </li>
       <li>
         <a href="">
-          <div class="nav-option">Cool stuff
+          <div hidden class="nav-option">FORUM
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <div hidden class="nav-option">COOL STUFF
           </div>
         </a>
       </li>
     </ul>
   </div>
 
-  <img id="header-logo" src="Images/Logo.png" alt="GP" width="120px">
+  
+  <a href="./"><img id="header-logo" src="Images/Logo.png" alt="GP"></a>
 
   <div id="sign-in-google"></div>
 
@@ -98,8 +112,8 @@
     </div>
   </div>
 
-  <img class="slider-arrow left-arr" src="Images/Icons/Arr.svg" alt="Left Arrow" width="150px">
-  <img class="slider-arrow right-arr" src="Images/Icons/Arr.svg" alt="Right Arrow" width="150px">
+  <img class="slider-arrow left-arr" src="Images/Icons/Arr.svg" alt="Left Arrow">
+  <img class="slider-arrow right-arr" src="Images/Icons/Arr.svg" alt="Right Arrow">
 
 </body>
 

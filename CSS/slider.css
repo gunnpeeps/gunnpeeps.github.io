@@ -44,6 +44,11 @@
   font-family: 'Bungee', cursive;
   display: block;
   text-transform: uppercase;
+  transition: font-size 0.2s;
+  cursor: pointer;
+}
+.title:hover {
+  font-size: 7rem;
 }
 
 /* subtitle */
@@ -59,6 +64,11 @@
   position: absolute;
   z-index: 3;
   cursor: pointer;
+  width: 150px;
+  transition: width ease 0.2s;
+}
+.slider-arrow:hover {
+  width: 200px;
 }
 
 .left-arr {

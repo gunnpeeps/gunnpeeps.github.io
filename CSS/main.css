@@ -27,11 +27,3 @@
 body {
   background-color: black;
 }
-
-#sign-in-google {
-  position: fixed;
-  top: calc(var(--navh) / 2);
-  left: 100%;
-  transform: translate(calc(-100% - var(--navh) / 2), -50%);
-  z-index: 2;
-}
