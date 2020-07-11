@@ -3,15 +3,20 @@ let globals = {
     id_token: false,
 }
 
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        console.log('User signed out.');
+function renderButton() {
+    gapi.signin2.render('sign-in-google', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
     });
 }
 
-async function onSignIn(googleUser) {
-    // Useful data for your client-side scripts:
+async function onSuccess(googleUser) {
+
     var profile = googleUser.getBasicProfile();
     console.log("ID: " + profile.getId()); // Don't send this directly to your server!
     console.log('Full Name: ' + profile.getName());
@@ -47,4 +52,15 @@ async function onSignIn(googleUser) {
         globals.email = profile.getEmail();
         globals.pfp = profile.getImageUrl();
     }
+}
+
+function onFailure(error) {
+    console.log(error);
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
 }
