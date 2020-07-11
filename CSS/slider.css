@@ -43,6 +43,12 @@
   font-family: 'Bungee', cursive;
   display: block;
   text-transform: uppercase;
+  transition: font-size 0.2s;
+  cursor: pointer;
+}
+
+.title:hover {
+  font-size: 7rem;
 }
 
 /* subtitle */

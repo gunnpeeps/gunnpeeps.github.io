@@ -1,6 +1,7 @@
 /* Everything */
 :root {
-  /* colors */
+  /* colors
+  https: //coolors.co/f9d4bb-664e4c-0a9e58-9fd19f-f0e2a3 */
   --greenrgb: 10, 158, 88;
   --green: rgb(var(--greenrgb));
   --liverrgb: 102, 78, 76;
@@ -11,8 +12,10 @@
   --champagne: rgb(var(--champagnergb));
   --apricotrgb: 250, 210, 280;
   --apricot: rgb(var(--apricotrgb));
+  --etonbluergb: 159, 209, 159;
+  --etonblue: rgb(var(--etonbluergb));
   /* lengths */
-  --navh: 10rem;
+  --navh: 20vh;
   --navfs: 1.5rem;
 }
 
