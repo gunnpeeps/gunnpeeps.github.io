@@ -42,7 +42,7 @@
   margin: 1rem;
   font-family: 'Bungee', cursive;
   display: block;
-  text-transform: uppercase;
+  text-transform: capitalize;
   transition: font-size 0.2s;
   cursor: pointer;
 }
@@ -96,6 +96,6 @@
 
 @keyframes rightArr {
   50% {
-    transform: translate(-30px, -50%);
+    transform: translate(-30px, -50%) rotate(180deg);
   }
 }
