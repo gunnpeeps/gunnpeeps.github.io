@@ -6,3 +6,7 @@
 #### Roguer do this
 * Figure out how to use Vuetify (vuet)-E-fEE
 * ~~Make better slides :O~~
+
+
+#### Someone do this:
+* Make drop down sign in
