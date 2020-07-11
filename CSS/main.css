@@ -13,7 +13,7 @@
   --apricot: rgb(var(--apricotrgb));
   /* lengths */
   --navh: 10rem;
-  --navfs: 1.7rem;
+  --navfs: 1.5rem;
 }
 
 * {
