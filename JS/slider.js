@@ -25,8 +25,9 @@ class Slider {
         this.nextSlideQd = true;
         for (let i = 0; i < this.slides.length; i++) {
             this.slides.eq(i).css({
-                marginLeft: ((i - n) * 100) + "vw"
+                marginLeft: ((i - n) * 100) + "%"
             })
+            this.nextSlideQd = false;
         }
     }
   }
@@ -36,7 +37,7 @@ class Slider {
         this.nextSlideQd = true;
         for (let i = 0; i < this.slides.length; i++) {
         this.slides.eq(i).animate({
-            marginLeft: ((i - n) * 100) + "vw"
+            marginLeft: ((i - n) * 100) + "%"
         }, this.slideTime, () => {
             this.nextSlideQd = false;
         })
@@ -70,14 +71,13 @@ class Slider {
 
   prevSlide() {
     if (!this.nextSlideQd) {
-        if (this.currSlide <= 0) {
-        this.currSlide = this.slides.length - 1;
-        this.setMargins(this.currSlide);
-        }
+    if (this.currSlide <= 0) {
+      this.currSlide = this.slides.length - 1;
+      this.setMargins(this.currSlide);
+    }
 
-        this.currSlide--;
-        this.animateMargins(this.currSlide);
-        this.nextSlideQd = true;
+    this.currSlide--;
+    this.animateMargins(this.currSlide);
     }
 
   }
