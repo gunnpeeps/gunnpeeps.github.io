@@ -27,12 +27,12 @@
 }
 
 .nav-option:hover {
-  color: var(--champagne);
+  color: var(--etonblue);
 }
 
 /* selected option */
 .selected {
-  color: var(--champagne);
+  color: var(--etonblue);
 }
 
 /* links for option divs */
@@ -44,6 +44,6 @@
   position: fixed;
   z-index: 5;
   left: 50%;
-  top: 10%;
+  top: calc(var(--navh)/2);
   transform: translate(-50%,-50%);
 }

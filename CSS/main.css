@@ -12,16 +12,20 @@
   --champagne: rgb(var(--champagnergb));
   --apricotrgb: 250, 210, 280;
   --apricot: rgb(var(--apricotrgb));
-  --etonblue: 159, 209, 159;
-  --etonblue: rgb(var(--etonblue));
+  --etonbluergb: 159, 209, 159;
+  --etonblue: rgb(var(--etonbluergb));
   /* lengths */
-  --navh: 10rem;
+  --navh: 20vh;
   --navfs: 1.5rem;
 }
 
 * {
   padding: 0;
   margin: 0;
+}
+
+body {
+  background-color: black;
 }
 
 #sign-in-google {
