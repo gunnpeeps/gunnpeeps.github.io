@@ -25,11 +25,30 @@ body {
     background-color: var(--liver);
     margin: 40px 0px 20px 0px;
     padding: 5px;
+    clear:both;
+}
+.post-post-button {
+    clear:both;
+    position:relative;
+    float:right;
+    width: auto;
+    display: block;
+    margin: 5px;
+    padding: 2px;
+    cursor: pointer;
+    background-color: var(--etonblue);
 }
 
 .post-content {
     background-color: var(--etonblue);
     outline: none;
+}
+#post-message {
+    margin: 10px 10px 0px 10px;
+}
+
+#post-message-content-wrapper {
+    padding: 5px 40px 0px 40px;
 }
 
 #announcements-options-div span {

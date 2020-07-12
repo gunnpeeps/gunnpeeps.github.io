@@ -2,7 +2,8 @@
 let globals = {
     signedIn: false,
     id_token: false,
-    buttonrendered: false
+    buttonrendered: false,
+    posting: false
 }
 
 function renderButton() {
@@ -69,10 +70,9 @@ function signOut() {
         console.log('User signed out.');
     });
 }
-let getAnnounce;
 $(() => {
 
-    getAnnounce = async function () {
+    let getAnnounce = async function () {
         if (globals.signedIn) {
             let returned = await fetch("https://gunnpeeps.herokuapp.com/announcements");
             let announcements = await returned.json();
@@ -111,7 +111,6 @@ $(() => {
         }
         return false;
     }
-    
 
     onLoad = async function() {
 
@@ -119,11 +118,46 @@ $(() => {
         $(".username").text(globals.name);
         $(".current-date").html(new Date(Date.now()).toDateString());
 
+        $("#post-button").click(() => {
+            if(globals.posting){
+                $("#announcements-post-div").fadeOut(200);
+            } else {
+                $("#announcements-post-div").fadeIn(200);
+            }
+            globals.posting = !globals.posting;
+            
+        });
+
+        $(".post-post-button").click(async () => {
+            if (globals.signedIn) {
+                let options = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        token: globals.id_token,
+                        post: $(".post-content").html(),
+                        status: "sent"
+                    })
+                }
+
+                let returned = await fetch("https://gunnpeeps.herokuapp.com/announcements", options);
+                returned = await returned.json();
+                console.log(returned);
+                if(returned.success){
+                    $(".post-content").empty();
+                    await getAnnounce();
+                }
+            }
+        })
+
         return await getAnnounce();
     }
 
     let curr = setInterval(async () => {
-        if(await onLoad()){
+        if(globals.signedIn){
+            await onLoad();
             clearInterval(curr);
         }
     }, 200);
