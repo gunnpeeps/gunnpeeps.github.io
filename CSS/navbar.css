@@ -56,6 +56,11 @@
   display: flex;
 }
 
+#header-logo-div a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 #header-logo {
   position:relative;
   top: calc(var(--navh)/2);
