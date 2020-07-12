@@ -1,7 +1,7 @@
 /* Navigation Bar */
 /* full bar */
 .nav-bar {
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  /*background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));*/
   position: absolute;
   width: 100vw;
   z-index: 1;
@@ -26,7 +26,9 @@
 
 /* selected option */
 .selected {
-  color: var(--etonblue);
+  /*color: black;*/
+  /*font-size: calc(var(--navfs) + 5px);*/
+  text-decoration: underline;
 }
 
 /* links for option divs */
@@ -39,21 +41,37 @@
   sans-serif;
   color: white;
   text-transform: uppercase;
-  transition: color 0.2s;
-  font-size: 20px;
+  transition: font-size 0.2s;
 }
 .nav-list>li>a:hover {
-  color: var(--etonblue);
+  /*color: black;/*var(--etonblue);*/
+  font-size: calc(var(--navfs) + 5px);
+}
+
+#header-logo-div {
+  position: absolute;
+  z-index: 5;
+  left: 40%;
+  display: flex;
 }
 
 #header-logo {
-  position: fixed;
-  z-index: 5;
-  left: 50%;
+  position:relative;
   top: calc(var(--navh)/2);
-  transform: translate(-50%, -50%);
-  width: 120px;
+  transform: translate(0%, -50%);
+  width: 60px;
   transition: width ease 0.2s;
+}
+
+#header-gunnpeeps {
+  position:relative;
+  font-family: 'Source Sans Pro';
+  color: white;
+  font-size: 50px;
+  line-height: var(--navh);
+  top: calc(var(--navh)/2);
+  transform: translate(0%, -50%);
+  margin-left: 10px;
 }
 
 #sign-in-regular{
@@ -67,7 +85,7 @@
   text-transform: uppercase;
   transition: color 0.2s;
   font-size: 20px;
-  position:fixed;
+  position:absolute;
   z-index: 3;
 }
 
@@ -80,12 +98,13 @@
 }
 
 .menu-icon-wrapper {
-  width: 50px
+  width: 50px;
+  z-index: 4;
 }
 
 #menu-icon {
   position: absolute;
-  z-index: 4;
+  z-index: 10000;
   top: calc(var(--navh) / 2);
   left: 4%;
   transform: translate(-50%, -50%);

@@ -1,5 +1,10 @@
 class Slider {
-  constructor(sliderClass) {
+  constructor(sliderClass, gradientClass) {
+
+    if(gradientClass instanceof Gradient){
+        this.gradient = gradientClass;
+        this.gradientEnclosed = true;
+    }
 
     this.timeBetweenSlides = 8000;
     this.slideTime = 1000;
@@ -23,6 +28,11 @@ class Slider {
   setMargins(n) {
     if (!this.nextSlideQd) {
         this.nextSlideQd = true;
+
+        if(this.gradientEnclosed){
+            this.gradient.changeColor();
+        }
+
         for (let i = 0; i < this.slides.length; i++) {
             this.slides.eq(i).css({
                 marginLeft: ((i - n) * 100) + "%"
@@ -35,6 +45,11 @@ class Slider {
   animateMargins(n) {
     if (!this.nextSlideQd) {
         this.nextSlideQd = true;
+
+        if (this.gradientEnclosed) {
+            this.gradient.changeColor();
+        }
+
         for (let i = 0; i < this.slides.length; i++) {
         this.slides.eq(i).animate({
             marginLeft: ((i - n) * 100) + "%"
@@ -87,17 +102,17 @@ class Slider {
 var slider1;
 
 $(function() {
+    let g = new Gradient("gradient-wrapper");
+    slider1 = new Slider("slider-1",g);
 
-  slider1 = new Slider("slider-1");
+    leftArr = $(".left-arr");
+    rightArr = $(".right-arr");
 
-  leftArr = $(".left-arr");
-  rightArr = $(".right-arr");
-
-  leftArr.on("click", () => {
-    slider1.prevSlide();
-  });
-  rightArr.on("click", () => {
-    slider1.nextSlide();
-  });
+    leftArr.on("click", () => {
+        slider1.prevSlide();
+    });
+    rightArr.on("click", () => {
+        slider1.nextSlide();
+    });
 
 });

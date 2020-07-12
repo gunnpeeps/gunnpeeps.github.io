@@ -3,10 +3,30 @@
 .slider-container {
   margin: auto;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   position: relative;
-  z-index: 0;
+  z-index: 3;
   overflow: hidden;
+}
+
+#gradient-wrapper {
+  width: 100vw;
+  height: 10vh;
+  background: rgb(64, 63, 68, 0.5);
+  z-index: -1;
+}
+/*#gradient-wrapper > div {
+  z-index: 2;
+}*/
+
+#gradient-wrapper-backup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  height: 10vh;
+  z-index: 0;
+  opacity: 0;
+  background: linear-gradient(45deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
 }
 
 /* slider */
@@ -61,15 +81,16 @@
 }
 
 /* arrows */
-.arr {
-  z-index: 1;
+.slider-arrow {
+  z-index: 5;
+  width: 50px;
 }
 
 .left-arr {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translate(50px, -50%);
+  transform: translate(20px, -50%);
 }
 
 .left-arr:hover {
@@ -80,7 +101,7 @@
   position: absolute;
   top: 50%;
   right: 0;
-  transform: translate(-50px, -50%) rotate(180deg);
+  transform: translate(-20px, -50%) rotate(180deg);
 }
 
 .right-arr:hover {
@@ -90,12 +111,12 @@
 
 @keyframes leftArr {
   50% {
-    transform: translate(30px, -50%);
+    transform: translate(5px, -50%);
   }
 }
 
 @keyframes rightArr {
   50% {
-    transform: translate(-30px, -50%) rotate(180deg);
+    transform: translate(-5px, -50%) rotate(180deg);
   }
 }

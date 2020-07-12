@@ -15,7 +15,7 @@
   --etonbluergb: 159, 209, 159;
   --etonblue: rgb(var(--etonbluergb));
   /* lengths */
-  --navh: 20vh;
+  --navh: 10vh;
   --navfs: 1.5rem;
 }
 
@@ -24,6 +24,9 @@
   margin: 0;
 }
 
+body {
+  background-color: black;
+}
 #sign-in-google {
   position: fixed;
   left: 50%;
