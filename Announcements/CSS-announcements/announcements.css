@@ -15,9 +15,39 @@ body {
 }
 
 #announcements-options-div {
-    background-color: var(--liver);
+    /* background-color: var(--liver); */
+    border-bottom: 4px solid black;
+    margin: 40px 0px 20px 0px;
+    padding: 5px;
 }
 
+#announcements-post-div {
+    background-color: var(--liver);
+    margin: 40px 0px 20px 0px;
+    padding: 5px;
+}
+
+.post-content {
+    background-color: var(--etonblue);
+    outline: none;
+}
+
+#announcements-options-div span {
+    margin: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* #refresh {
+    background-color: var(--etonblue);
+    cursor: pointer;
+}
+
+#post-button {
+    background-color: var(--etonblue);
+    cursor:pointer;
+}
+ */
 /* #announcements-content-div {
     background-color: var(--flax);
 }
