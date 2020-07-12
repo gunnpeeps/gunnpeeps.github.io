@@ -92,6 +92,10 @@ body {
     background-color: var(--champagne);
     padding: 5px 40px 10px 40px;
 }
+.message-content img {
+    max-width: 500px;
+    height: auto;
+}
 /* .message-user {
     background-color: var(--apricot);
 } */

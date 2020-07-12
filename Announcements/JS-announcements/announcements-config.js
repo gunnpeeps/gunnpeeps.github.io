@@ -77,15 +77,21 @@ $(() => {
             let returned = await fetch("https://gunnpeeps.herokuapp.com/announcements");
             let announcements = await returned.json();
             announcements.sort((a, b) => {
-                return b.timestamp - a.timestamp
+                return a.timestamp - b.timestamp
             })
             console.log(announcements);
             
             let wrapper = $("#announcements-content-div");
-            wrapper.empty();
+            /*wrapper.empty();*/
 
             for(let a of announcements){
-                let currMsg = $("<div>").addClass("message");
+
+                console.log(a._id);
+                if($(`.message[data-msgid="${a._id}"]`).length > 0){
+                    console.log(a._id);
+                    continue;
+                }
+                let currMsg = $("<div>").addClass("message").attr("data-msgid",a._id);
                 let t = new Date(a.timestamp);
                 currMsg.html(
                 `<div class="user-icon-wrapper">
@@ -103,7 +109,7 @@ $(() => {
                         ${a.post}
                     </div>
                 </div>`);
-                wrapper.append(currMsg);
+                wrapper.prepend(currMsg);
             }
 
 
@@ -152,13 +158,17 @@ $(() => {
             }
         })
 
-        return await getAnnounce();
+        await getAnnounce();
+
+        setInterval(async () => {
+            await getAnnounce();
+        }, 500);
     }
 
     let curr = setInterval(async () => {
         if(globals.signedIn){
-            await onLoad();
             clearInterval(curr);
+            await onLoad();
         }
     }, 200);
 
