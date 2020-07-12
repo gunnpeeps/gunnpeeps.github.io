@@ -1,79 +1,59 @@
-class Slider {
-  constructor(sliderClass, gradientClass) {
-
-    if (gradientClass && (gradientClass instanceof Gradient || gradientClass instanceof GradientGroup)) {
-        this.gradient = gradientClass;
-        this.gradientEnclosed = "one";
-    } else if (gradientClass && gradientClass[0] && (gradientClass[0] instanceof Gradient || gradientClass[0] instanceof GradientGroup)) {
-        this.gradient = gradientClass;
-        this.gradientEnclosed = "list";
-    }
-
-    this.timeBetweenSlides = 8000;
-    this.slideTime = 500;
+class Slider extends Timed{
+  constructor(sliderClass) {
+    super(8000);
 
     this.slides = $(`.${sliderClass}>img`);
     this.currSlide = Math.floor(this.slides.length * Math.random());
     this.setMargins(this.currSlide);
 
     setInterval(() => {
-      if (!this.nextSlideQd) {
+      //if (!this.nextQd) {
         this.nextSlide();
-        this.nextSlideQd = true;
-      }
-    }, this.timeBetweenSlides);
+        //this.nextQd = true;
+      //}
+    }, this.timeBetween);
 
-    this.nextSlideQd = false;
+    this.nextQd = false;
 
     return this;
   }
 
   setMargins(n) {
-    if (!this.nextSlideQd) {
-        this.nextSlideQd = true;
+    if (!this.nextQd) {
+        this.nextQd = true;
 
-        if(this.gradientEnclosed === "one"){
-            this.gradient.changeColor();
-        } else if (this.gradientEnclosed === "list") {
-            for(let g of this.gradient){
-                g.changeColor();
-            }
+        if (this.indenpendent() && this.partOf) {
+          this.parent.updateAllBut(this);
         }
 
         for (let i = 0; i < this.slides.length; i++) {
             this.slides.eq(i).css({
                 marginLeft: ((i - n) * 100) + "%"
             })
-            this.nextSlideQd = false;
+            this.nextQd = false;
         }
     }
   }
 
   animateMargins(n) {
-    if (!this.nextSlideQd) {
-        this.nextSlideQd = true;
-
-        if (this.gradientEnclosed === "one") {
-            this.gradient.changeColor();
-        } else if (this.gradientEnclosed === "list") {
-            for (let g of this.gradient) {
-                g.changeColor();
-            }
+    if (!this.nextQd) {
+        this.nextQd = true;
+        if (this.indenpendent() && this.partOf) {
+          this.parent.updateAllBut(this);
         }
-
         for (let i = 0; i < this.slides.length; i++) {
         this.slides.eq(i).animate({
             marginLeft: ((i - n) * 100) + "%"
         }, this.slideTime, () => {
-            this.nextSlideQd = false;
+            this.nextQd = false;
         })
         }
     }
   }
 
   nextSlide() {
-    if (!this.nextSlideQd) {
-       
+    if (!this.nextQd) {
+      
         if (this.currSlide >= this.slides.length - 1) {
         this.currSlide = 0;
         this.setMargins(this.currSlide);
@@ -81,22 +61,26 @@ class Slider {
 
         this.currSlide++;
         this.animateMargins(this.currSlide);
-        this.nextSlideQd = true;
+        this.nextQd = true;
     }
 
   }
 
+  update(){
+    this.nextSlide();
+  }
+
   goToSlide(n) {
-    if (!this.nextSlideQd) {
+    if (!this.nextQd) {
       
       this.currSlide = n;
       this.animateMargins(n);
-      this.nextSlideQd = true;
+      this.nextQd = true;
     }
   }
 
   prevSlide() {
-    if (!this.nextSlideQd) {
+    if (!this.nextQd) {
     if (this.currSlide <= 0) {
       this.currSlide = this.slides.length - 1;
       this.setMargins(this.currSlide);
