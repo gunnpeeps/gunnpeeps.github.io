@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Gunn Peeps Forums</title>
+    <title>Gunn Peeps Announcements</title>
     <meta charset="utf-8">
 
     <!-- Todo: Favicon -->
@@ -40,22 +40,23 @@
     </script>
 
     <!-- Frameworks -->
-    <!-- JQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Google API -->
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Vue -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
     <!-- Vuetify -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.4/vuetify.min.js"></script>
 
     <!-- JS -->
-    <script src="/JS/google-config.js"></script>
+<!--     <script src="/JS/google-config.js"></script> -->
+    <script src="./JS-announcements/announcements-config.js"></script>
     <script src="/JS/timed.js"></script>
     <script src="/JS/gradient.js"></script>
     <script src="/JS/slider.js"></script>
     <script src="/JS/menu.js"></script>
-    <script src="./JS-announcements/announcements-config.js"></script>
+    
 
 </head>
 
@@ -77,13 +78,13 @@
             </li>
             <li>
                 <a href="/Announcements/">
-                    <div hidden class="nav-option">ANNOUNCEMENTS
+                    <div hidden class="nav-option selected">ANNOUNCEMENTS
                     </div>
                 </a>
             </li>
             <li>
                 <a href="/Forums/">
-                    <div hidden class="nav-option selected">FORUM
+                    <div hidden class="nav-option">FORUM
                     </div>
                 </a>
             </li>
@@ -106,22 +107,53 @@
   </div-->
 
 
+    
+    
     <div id="header-logo-div">
 
         <a href="./"><img id="header-logo" src="/Images/Logos/WhiteLogo.png" alt="GP"></a>
-        <a href="/">
-            <div id="header-gunnpeeps">Gunn Peeps Forums</div>
+        <a href="./">
+            <div id="header-gunnpeeps">Announcements</div>
         </a>
     </div>
 
-    <div id="gradient-wrapper-header" class="gradient">
-        <div id="gradient-wrapper-header-backup" class="gradient-backup"></div>
+
+    <div id="side-div">
+        <div id="user-info-div">
+            You are logged in as Rog Fanog
+        </div>
+        <div id="user-info-div">
+            More info
+        </div>
     </div>
 
-    <!-- this is the about thing if u want to remove it -->
-    <div id="gradient-wrapper-heading" class="gradient">
-        <div id="gradient-wrapper-heading-backup" class="gradient-backup"></div>
-        <h1 id="about-heading">About</h1>
+    <div id="announcements-div">
+        <div id="announcements-options-div">
+            <button>Post</button>
+            <button id="refresh">Refresh</button>
+        </div>
+        <div id="announcements-content-div">
+
+            <div class="message">
+                <div class="user-icon-wrapper">
+                    <img class="pfp" src="/Images/Slider Images/Gecko.jpg" alt="">
+                </div>
+                <div class="smoltri"></div>
+                <div class="message-content-wrapper">
+                    <div class="message-user">
+                        <span class="message-username">Roger Fan</span> 
+                        <span class="message-userat">BubbyBabur</span> 
+                        <span class="message-forum">Announcements</span>
+                        <span class="message-time">Jul 11</span>
+                    </div>
+                    <div class="message-content">
+                        <h1> Hi! This is a test!</h1>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 

@@ -52,6 +52,7 @@
   position: absolute;
   z-index: 5;
   left: 50%;
+  top: 0%;
   transform: translate(-50%,0%);
   display: flex;
 }

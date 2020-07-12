@@ -1,60 +1,102 @@
 /* nav bar override */
 .nav-bar {
-    background: none;
-}
-
-/* Slider */
-/* slider area */
-
-#gradient-wrapper-header {
-    width: 100vw;
-    height: 10vh;
-}
-
-#gradient-wrapper-header-backup {
-    height: 10vh;
-}
-
-#gradient-wrapper-heading {
-    width: 100vw;
-    height: 20vh;
-}
-
-#gradient-wrapper-heading-backup {
-    width: 100vw;
-    height: 20vh;
-}
-
-/* title and subtitle */
-.title-container {
+    background: #346F4D;
     position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
 }
 
-/* title */
-.title {
-    font-size: 5rem;
-    margin: 1rem;
-    font-family: 'Bungee', cursive;
+body {
+    background-color: gray;
+}
+
+#announcements-div {
+    width: 60vw;
+    float:left;
+    margin-left: 10vw;
+}
+
+#announcements-options-div {
+    background-color: var(--liver);
+}
+
+/* #announcements-content-div {
+    background-color: var(--flax);
+}
+ */
+.message {
+    display: flex;
+    margin: 10px 10px;
+    padding: 5px;
+/*     background-color: var(--flax);
+ */}
+
+.smoltri {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    border-right:10px solid var(--champagne);
+}
+
+.message-content-wrapper {
     display: block;
-    text-transform: uppercase;
-    transition: font-size 0.2s;
-    cursor: pointer;
+    background-color: var(--champagne);
+    padding: 5px 40px 10px 40px;
+}
+/* .message-user {
+    background-color: var(--apricot);
+} */
+.message-username {
+    text-decoration: underline;
+}
+.message-userat::before {
+    content: "@"
+}
+.message-userat {
+    color:#686868;
+    font-style: italic;
+}
+.message-forum::before {
+    content: " > "
+}
+.message-forum {
+    color: black;
+    font-weight: bold;
+}
+.message-time::before {
+    content: " . "
+}
+.message-time {
+    color:#686868;
 }
 
-.title:hover {
-    font-size: 7rem;
-}
-
-/* subtitle */
-.subtitle {
-    font-size: 2rem;
-    margin: 1rem;
-    font-family: 'Merienda One', cursive;
+.user-icon-wrapper {
     display: block;
-    text-transform: capitalize;
+    float:left;
+    padding: 2px;
+/*     background-color: var(--etonblue);
+ */}
+
+.pfp {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#side-div {
+    display: block;
+    float: right;
+    background-color: var(--etonblue);
+    width: 20vw;
+    height:100vh;
+    margin:0px;
+}
+
+#user-info-div {
+    display: block;
+    background-color: var(--apricot);
+    width: 15vw;
+    margin: 20px auto;
+    padding: 20px;
+    height: 20vh;
 }

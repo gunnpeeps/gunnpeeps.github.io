@@ -19,25 +19,20 @@
   --navfs: 1.5rem;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-}
-
 body {
+  margin: 0;
   background-color: black;
   font-family: 'Source Sans Pro',sans-serif;
 }
 
-h1 {
+h1.mainHeader {
   position: relative;
   z-index: 1;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   font-size: 50px;
-  color:white;
+  color: white;
   top: 50%;
-  transform: translate(0%,-50%);
+  transform: translate(0%, -50%);
 }
-
