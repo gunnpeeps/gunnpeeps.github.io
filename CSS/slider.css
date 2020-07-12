@@ -1,0 +1,101 @@
+/* Slider */
+/* slider area */
+.slider-container {
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* slider */
+.slider {
+  list-style: none;
+  display: block;
+  overflow: hidden;
+}
+
+/* slider images (slides) */
+.slider>img {
+  position: absolute;
+  float: left;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+/* title and subtitle */
+.title-container {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+/* title */
+.title {
+  font-size: 5rem;
+  margin: 1rem;
+  font-family: 'Bungee', cursive;
+  display: block;
+  text-transform: capitalize;
+  transition: font-size 0.2s;
+  cursor: pointer;
+}
+
+.title:hover {
+  font-size: 7rem;
+}
+
+/* subtitle */
+.subtitle {
+  font-size: 2rem;
+  margin: 1rem;
+  font-family: 'Merienda One', cursive;
+  display: block;
+  text-transform: capitalize;
+}
+
+/* arrows */
+.arr {
+  z-index: 1;
+}
+
+.left-arr {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(50px, -50%);
+}
+
+.left-arr:hover {
+  animation: leftArr 1s infinite;
+}
+
+.right-arr {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50px, -50%) rotate(180deg);
+}
+
+.right-arr:hover {
+  animation: rightArr 1s infinite;
+  transition: transform 0.5s;
+}
+
+@keyframes leftArr {
+  50% {
+    transform: translate(30px, -50%);
+  }
+}
+
+@keyframes rightArr {
+  50% {
+    transform: translate(-30px, -50%) rotate(180deg);
+  }
+}
