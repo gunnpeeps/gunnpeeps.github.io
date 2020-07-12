@@ -13,7 +13,7 @@ class Gradient {
 
     changeTo(strTo){
         this.gradientbackup.css("background", strTo);
-        this.gradientbackup.fadeTo(500, 1.0, () => {
+        this.gradientbackup.fadeTo(300, 1.0, () => {
             this.gradient.css("background", strTo);
             this.gradientbackup.fadeOut(0);
         })

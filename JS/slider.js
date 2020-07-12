@@ -10,7 +10,7 @@ class Slider {
     }
 
     this.timeBetweenSlides = 8000;
-    this.slideTime = 1000;
+    this.slideTime = 500;
 
     this.slides = $(`.${sliderClass}>img`);
     this.currSlide = Math.floor(this.slides.length * Math.random());
