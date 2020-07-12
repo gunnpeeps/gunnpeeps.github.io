@@ -1,9 +1,12 @@
 class Slider {
   constructor(sliderClass, gradientClass) {
 
-    if(gradientClass instanceof Gradient){
+    if (gradientClass && (gradientClass instanceof Gradient || gradientClass instanceof GradientGroup)) {
         this.gradient = gradientClass;
-        this.gradientEnclosed = true;
+        this.gradientEnclosed = "one";
+    } else if (gradientClass && gradientClass[0] && (gradientClass[0] instanceof Gradient || gradientClass[0] instanceof GradientGroup)) {
+        this.gradient = gradientClass;
+        this.gradientEnclosed = "list";
     }
 
     this.timeBetweenSlides = 8000;
@@ -29,8 +32,12 @@ class Slider {
     if (!this.nextSlideQd) {
         this.nextSlideQd = true;
 
-        if(this.gradientEnclosed){
+        if(this.gradientEnclosed === "one"){
             this.gradient.changeColor();
+        } else if (this.gradientEnclosed === "list") {
+            for(let g of this.gradient){
+                g.changeColor();
+            }
         }
 
         for (let i = 0; i < this.slides.length; i++) {
@@ -46,8 +53,12 @@ class Slider {
     if (!this.nextSlideQd) {
         this.nextSlideQd = true;
 
-        if (this.gradientEnclosed) {
+        if (this.gradientEnclosed === "one") {
             this.gradient.changeColor();
+        } else if (this.gradientEnclosed === "list") {
+            for (let g of this.gradient) {
+                g.changeColor();
+            }
         }
 
         for (let i = 0; i < this.slides.length; i++) {
@@ -102,8 +113,9 @@ class Slider {
 var slider1;
 
 $(function() {
-    let g = new Gradient("gradient-wrapper");
-    slider1 = new Slider("slider-1",g);
+    let g1 = new Gradient("gradient-wrapper-header");
+    let g2 = new Gradient("gradient-wrapper-heading");
+    slider1 = new Slider("slider-1",new GradientGroup([g1,g2]));
 
     leftArr = $(".left-arr");
     rightArr = $(".right-arr");
