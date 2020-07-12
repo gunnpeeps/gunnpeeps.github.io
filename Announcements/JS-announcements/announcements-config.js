@@ -2,18 +2,22 @@
 let globals = {
     signedIn: false,
     id_token: false,
+    buttonrendered: false
 }
 
 function renderButton() {
-    gapi.signin2.render('sign-in-google', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-    });
+    if(!globals.buttonrendered){
+        globals.buttonrendered = true;
+        gapi.signin2.render('sign-in-google', {
+            'scope': 'profile email',
+            'width': 240,
+            'height': 50,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': onSuccess,
+            'onfailure': onFailure
+        });
+    }
 }
 
 async function onSuccess(googleUser) {
@@ -107,8 +111,19 @@ $(() => {
         }
         return false;
     }
+    
+
+    onLoad = async function() {
+
+        $(".userpfp").attr("src",globals.pfp);
+        $(".username").text(globals.name);
+        $(".current-date").html(new Date(Date.now()).toDateString());
+
+        return await getAnnounce();
+    }
+
     let curr = setInterval(async () => {
-        if(await getAnnounce()){
+        if(await onLoad()){
             clearInterval(curr);
         }
     }, 200);
