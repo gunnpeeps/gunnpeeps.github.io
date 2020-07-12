@@ -1,0 +1,61 @@
+
+/* nav bar override */
+.nav-bar {
+    background: none;
+}
+
+/* Slider */
+/* slider area */
+
+#gradient-wrapper-header {
+    width: 100vw;
+    height: 10vh;
+}
+
+#gradient-wrapper-header-backup {
+    height: 10vh;
+}
+
+#gradient-wrapper-heading {
+    width: 100vw;
+    height: 20vh;
+}
+
+#gradient-wrapper-heading-backup {
+    width: 100vw;
+    height: 20vh;
+}
+
+/* title and subtitle */
+.title-container {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+/* title */
+.title {
+    font-size: 5rem;
+    margin: 1rem;
+    font-family: 'Bungee', cursive;
+    display: block;
+    text-transform: uppercase;
+    transition: font-size 0.2s;
+    cursor: pointer;
+}
+
+.title:hover {
+    font-size: 7rem;
+}
+
+/* subtitle */
+.subtitle {
+    font-size: 2rem;
+    margin: 1rem;
+    font-family: 'Merienda One', cursive;
+    display: block;
+    text-transform: capitalize;
+}

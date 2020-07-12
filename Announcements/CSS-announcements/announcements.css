@@ -1,0 +1,102 @@
+/* nav bar override */
+.nav-bar {
+    background: #346F4D;
+    position: relative;
+}
+
+body {
+    background-color: gray;
+}
+
+#announcements-div {
+    width: 60vw;
+    float:left;
+    margin-left: 10vw;
+}
+
+#announcements-options-div {
+    background-color: var(--liver);
+}
+
+/* #announcements-content-div {
+    background-color: var(--flax);
+}
+ */
+.message {
+    display: flex;
+    margin: 10px 10px;
+    padding: 5px;
+/*     background-color: var(--flax);
+ */}
+
+.smoltri {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    border-right:10px solid var(--champagne);
+}
+
+.message-content-wrapper {
+    display: block;
+    background-color: var(--champagne);
+    padding: 5px 40px 10px 40px;
+}
+/* .message-user {
+    background-color: var(--apricot);
+} */
+.message-username {
+    text-decoration: underline;
+}
+.message-userat::before {
+    content: "@"
+}
+.message-userat {
+    color:#686868;
+    font-style: italic;
+}
+.message-forum::before {
+    content: " > "
+}
+.message-forum {
+    color: black;
+    font-weight: bold;
+}
+.message-time::before {
+    content: " . "
+}
+.message-time {
+    color:#686868;
+}
+
+.user-icon-wrapper {
+    display: block;
+    float:left;
+    padding: 2px;
+/*     background-color: var(--etonblue);
+ */}
+
+.pfp {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#side-div {
+    display: block;
+    float: right;
+    background-color: var(--etonblue);
+    width: 20vw;
+    height:100vh;
+    margin:0px;
+}
+
+#user-info-div {
+    display: block;
+    background-color: var(--apricot);
+    width: 15vw;
+    margin: 20px auto;
+    padding: 20px;
+    height: 20vh;
+}

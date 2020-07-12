@@ -22,11 +22,12 @@
   <!-- font-family: 'Bungee', cursive; -->
   <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 
-  <link rel="icon" type="image/png" href="Images/Favicon.png">
+  <link rel="icon" type="image/png" href="Images/Logos/Favicon.png">
 
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="CSS/main.css">
-  <link rel="stylesheet" type="text/css" href="CSS/slider.css">
+  <link rel="stylesheet" type="text/css" href="CSS/slidersgradients.css">
+  <link rel="stylesheet" type="text/css" href="CSS-index/slider.css">
   <link rel="stylesheet" type="text/css" href="CSS/navbar.css">
 
   <!-- Metas -->
@@ -50,12 +51,19 @@
 
   <!-- JS -->
   <script src="JS/google-config.js"></script>
+  <script src="JS/timed.js"></script>
+  <script src="JS/gradient.js"></script>
   <script src="JS/slider.js"></script>
   <script src="JS/menu.js"></script>
+  <script src="JS-index/index-config.js"></script>
 
 </head>
 
 <body>
+
+  <div id="gradient-wrapper-header" class="gradient">
+    <div id="gradient-wrapper-header-backup" class="gradient-backup"></div>
+  </div>
 
   <div class="nav-bar">
 
@@ -72,13 +80,13 @@
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="/Announcements/">
           <div hidden class="nav-option">ANNOUNCEMENTS
           </div>
         </a>
       </li>
       <li>
-        <a href="">
+        <a href="/Forums/">
           <div hidden class="nav-option">FORUM
           </div>
         </a>
@@ -92,11 +100,25 @@
     </ul>
   </div>
 
-
-  <a href="./"><img id="header-logo" src="Images/Logo.png" alt="GP"></a>
-
   <div id="sign-in-google"></div>
+  <!-- TO DO: MAKE SIGN IN DROPDOWN
+    div id="sign-in">
+    <div id="sign-in-regular">Sign In</div>
+    <div id="sign-in-options">
+      
+    </div>
+  </div-->
 
+
+  <div id="header-logo-div">
+
+    <a href="./"><img id="header-logo" src="/Images/Logos/WhiteLogo.png" alt="GP"></a>
+    <a href="/">
+      <div id="header-gunnpeeps">Gunn Peeps</div>
+    </a>
+  </div>
+
+  
   <div class="slider-container">
     <div class="slider slider-1">
       <img src="./Images/Slider Images/ConcertPhoto1.jpg" alt="Slide 0" />
@@ -112,9 +134,17 @@
       <div class="subtitle">where time is wasted</div>
     </div>
   </div>
+  
 
   <img class="slider-arrow left-arr" src="Images/Icons/Arr.svg" alt="Left Arrow">
   <img class="slider-arrow right-arr" src="Images/Icons/Arr.svg" alt="Right Arrow">
+
+  <!-- this is the about thing if u want to remove it -->
+  <div id="gradient-wrapper-heading" class="gradient">
+    <div id="gradient-wrapper-heading-backup" class="gradient-backup"></div>
+    <h1 id="about-heading" class="mainHeader">About</h1>
+  </div>
+  
 
 </body>
 

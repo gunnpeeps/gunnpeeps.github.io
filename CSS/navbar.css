@@ -2,9 +2,14 @@
 /* full bar */
 .nav-bar {
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-  position: fixed;
+  position: absolute;
   width: 100vw;
-  z-index: 1;
+  z-index: 5;
+}
+
+.nav-bar ul {
+  width: 100vw;
+  margin:0px;
 }
 
 /* list of options */
@@ -14,57 +19,99 @@
 }
 
 /* option divs */
-.nav-option {
-  padding: 0rem 2vw;
+.nav-list>li {
+  margin: 0rem 2vw;
   height: var(--navh);
-  font-size: var(--navfs);
-  font-family: 'Source Sans Pro', sans-serif;
-  line-height: var(--navh);
-  color: white;
-  text-transform: uppercase;
-  transition: color 0.2s;
-  font-size: 20px;
-}
-
-.nav-option:hover {
-  color: var(--etonblue);
 }
 
 /* selected option */
 .selected {
-  color: var(--etonblue);
+  /*color: black;*/
+  /*font-size: calc(var(--navfs) + 5px);*/
+  text-decoration: underline;
 }
 
 /* links for option divs */
 .nav-list>li>a {
   text-decoration: none;
+  position: relative;
+  line-height: var(--navh);
+  font-size: var(--navfs);
+  font-family: 'Source Sans Pro',
+  sans-serif;
+  color: white;
+  text-transform: uppercase;
+  transition: font-size 0.2s;
+}
+.nav-list>li>a:hover {
+  /*color: black;/*var(--etonblue);*/
+  font-size: calc(var(--navfs) + 5px);
+}
+
+#header-logo-div {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 0%;
+  transform: translate(-50%,0%);
+  display: flex;
+}
+
+#header-logo-div a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #header-logo {
-  position: fixed;
-  z-index: 5;
-  left: 50%;
+  position:relative;
   top: calc(var(--navh)/2);
-  transform: translate(-50%, -50%);
-  width: 120px;
+  transform: translate(0%, -50%);
+  width: 60px;
   transition: width ease 0.2s;
 }
 
+#header-gunnpeeps {
+  position:relative;
+  font-family: 'Source Sans Pro';
+  color: white;
+  font-size: 50px;
+  line-height: var(--navh);
+  top: calc(var(--navh)/2);
+  transform: translate(0%, -50%);
+  margin-left: 10px;
+}
+
+#sign-in-regular{
+  padding: 0rem 2vw;
+  height: var(--navh);
+  font-size: var(--navfs);
+  font-family: 'Source Sans Pro',
+  sans-serif;
+  line-height: var(--navh);
+  color: white;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  font-size: 20px;
+  position:absolute;
+  z-index: 3;
+}
+
 #sign-in-google {
-  position: fixed;
+  position: absolute;
   top: calc(var(--navh) / 2);
   left: 100%;
   transform: translate(calc(-100% - var(--navh) / 2), -50%);
-  z-index: 2;
+  z-index: 5;
 }
 
 .menu-icon-wrapper {
-  width: 50px
+  width: 50px;
+  z-index: 4;
 }
 
 #menu-icon {
-  position: fixed;
-  z-index: 4;
+  position: absolute;
+  z-index: 10000;
   top: calc(var(--navh) / 2);
   left: 4%;
   transform: translate(-50%, -50%);
@@ -75,4 +122,10 @@
 
 #menu-icon:hover {
   width: 60px;
+}
+
+#sign-in {
+  position: relative;
+  left: 80%;
+  /*transform: translate(0px, 0px);*/
 }

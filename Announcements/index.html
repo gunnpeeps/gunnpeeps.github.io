@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <title>Gunn Peeps Announcements</title>
+    <meta charset="utf-8">
+
+    <!-- Todo: Favicon -->
+
+    <!-- Fonts -->
+    <!-- font-family: 'Comfortaa', cursive; -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+    <!-- font-family: 'Martel', serif; -->
+    <link href="https://fonts.googleapis.com/css2?family=Martel&display=swap" rel="stylesheet">
+    <!-- font-family: 'Merienda One', cursive; -->
+    <link href="https://fonts.googleapis.com/css2?family=Merienda+One&display=swap" rel="stylesheet">
+    <!-- font-family: 'Nanum Gothic Coding', monospace; -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <!-- font-family: 'Source Sans Pro', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <!-- font-family: 'Bungee', cursive; -->
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/Images/Logos/Favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/slidersgradients.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/navbar.css">
+    <link rel="stylesheet" type="text/css" href="./CSS-announcements/announcements.css">
+
+    <!-- Metas -->
+    <!--meta name="google-signin-scope" content="profile email"-->
+    <meta name="google-signin-client_id"
+        content="760625180157-urki85i1c7u00coqe32g7hc372a5rk4t.apps.googleusercontent.com">
+
+    <script>
+
+    </script>
+
+    <!-- Frameworks -->
+    <!-- Google API -->
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Vue -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <!-- Vuetify -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.4/vuetify.min.js"></script>
+
+    <!-- JS -->
+<!--     <script src="/JS/google-config.js"></script> -->
+    <script src="./JS-announcements/announcements-config.js"></script>
+    <script src="/JS/timed.js"></script>
+    <script src="/JS/gradient.js"></script>
+    <script src="/JS/slider.js"></script>
+    <script src="/JS/menu.js"></script>
+    
+
+</head>
+
+<body>
+
+    <div class="nav-bar">
+
+        <ul class="nav-list">
+            <li>
+                <div class="nav-option menu-icon-wrapper">
+                    <img id="menu-icon" src="/Images/Icons/Menu.png" alt="Menu">
+                </div>
+            </li>
+            <li>
+                <a href="/">
+                    <div hidden class="nav-option">HOME
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/Announcements/">
+                    <div hidden class="nav-option selected">ANNOUNCEMENTS
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/Forums/">
+                    <div hidden class="nav-option">FORUM
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div hidden class="nav-option">COOL STUFF
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="sign-in-google"></div>
+    <!-- TO DO: MAKE SIGN IN DROPDOWN
+    div id="sign-in">
+    <div id="sign-in-regular">Sign In</div>
+    <div id="sign-in-options">
+      
+    </div>
+  </div-->
+
+
+    
+    
+    <div id="header-logo-div">
+
+        <a href="./"><img id="header-logo" src="/Images/Logos/WhiteLogo.png" alt="GP"></a>
+        <a href="./">
+            <div id="header-gunnpeeps">Announcements</div>
+        </a>
+    </div>
+
+
+    <div id="side-div">
+        <div id="user-info-div">
+            You are logged in as Rog Fanog
+        </div>
+        <div id="user-info-div">
+            More info
+        </div>
+    </div>
+
+    <div id="announcements-div">
+        <div id="announcements-options-div">
+            <button>Post</button>
+            <button id="refresh">Refresh</button>
+        </div>
+        <div id="announcements-content-div">
+
+            <div class="message">
+                <div class="user-icon-wrapper">
+                    <img class="pfp" src="/Images/Slider Images/Gecko.jpg" alt="">
+                </div>
+                <div class="smoltri"></div>
+                <div class="message-content-wrapper">
+                    <div class="message-user">
+                        <span class="message-username">Roger Fan</span> 
+                        <span class="message-userat">BubbyBabur</span> 
+                        <span class="message-forum">Announcements</span>
+                        <span class="message-time">Jul 11</span>
+                    </div>
+                    <div class="message-content">
+                        <h1> Hi! This is a test!</h1>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

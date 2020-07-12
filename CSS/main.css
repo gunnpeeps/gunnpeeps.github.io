@@ -15,19 +15,24 @@
   --etonbluergb: 159, 209, 159;
   --etonblue: rgb(var(--etonbluergb));
   /* lengths */
-  --navh: 20vh;
+  --navh: 10vh;
   --navfs: 1.5rem;
 }
 
-* {
-  padding: 0;
+body {
   margin: 0;
+  background-color: black;
+  font-family: 'Source Sans Pro',sans-serif;
 }
 
-#sign-in-google {
-  position: fixed;
-  left: 50%;
-  top: calc(var(--navh) / 2);
-  transform: translate(calc(-100% - var(--navh) / 2), -50%);
-  z-index: 2;
+h1.mainHeader {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  top: 50%;
+  transform: translate(0%, -50%);
 }
