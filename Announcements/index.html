@@ -125,7 +125,7 @@
             <span id="side-friends">Friends</span>
             <span id="side-forums">Forums</span>
         </div>
-        <div class="side-info-div">
+        <div id="side-format-div" class="side-info-div">
             <h1>Format (Not Working)</h1>
             <p>Sort By: 
                 <select id="sort-by">
@@ -165,14 +165,50 @@
             </p>
             <button>Save My Preferences</button>
         </div>
-        <div class="side-info-div">
-            <h1>About Announcements</h1>
+        <div id="side-me-div" class="side-info-div">
+            <h1>Me</h1>
+            <p>You are signed in as <span class="username">wait for load</span>.</p>
+            <img src="" class="pfp userpfp" id="usersidepfp" alt=""> <span>@BubbyBabur</span>
+            <p><a id="user-homepage-a" href="./">Homepage</a></p>
+        </div>
+        <div id="side-friends-div" class="side-info-div">
+            <h1>Friends</h1>
+            <p>You have no friends.</p>
+        </div>
+        <div id="side-forums-div" class="side-info-div">
+            <h1>Forums</h1>
+            <p>Forums haven't been set up yet.</p>
+        </div>
+        <div id="side-about-div" class="side-info-div">
+            <h1>About Announcement</h1>
             <p>Announcements are basically forums where we announce stuff. Yep. Usually, only admins can post to
                 Announcements, but during this development phase, everyone can temporarily post.</p>
         </div>
     </div>
 
     <div id="announcements-div">
+        <div id="announcements-content-div">
+
+            <div class="message">
+                <div class="user-icon-wrapper">
+                    <img class="pfp" src="/Images/Slider Images/Gecko.jpg" alt="">
+                </div>
+                <div class="smoltri"></div>
+                <div class="message-content-wrapper">
+                    <div class="message-user">
+                        <span class="message-username">Roger Fan</span>
+                        <span class="message-userat">BubbyBabur</span>
+                        <span class="message-forum">Announcements</span>
+                        <span class="message-time">Jul 11</span>
+                    </div>
+                    <div class="message-content">
+                        <h1> Sign in (or wait for it to load) to view announcements </h1>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <div id="announcements-options-div">
             <span id="post-button">Post</span>
             <span id="refresh">Refresh</span>
@@ -204,28 +240,7 @@
             
             
         </div>
-        <div id="announcements-content-div">
-
-            <div class="message">
-                <div class="user-icon-wrapper">
-                    <img class="pfp" src="/Images/Slider Images/Gecko.jpg" alt="">
-                </div>
-                <div class="smoltri"></div>
-                <div class="message-content-wrapper">
-                    <div class="message-user">
-                        <span class="message-username">Roger Fan</span> 
-                        <span class="message-userat">BubbyBabur</span> 
-                        <span class="message-forum">Announcements</span>
-                        <span class="message-time">Jul 11</span>
-                    </div>
-                    <div class="message-content">
-                        <h1> Sign in (or wait for it to load) to view announcements </h1>
-                        
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        
     </div>
 
 

@@ -116,61 +116,25 @@ $(() => {
     }
 
     let setupside = function(){
-        let formatdiv = `<div class="side-info-div">
-            <h1>Format (Not Working)</h1>
-            <p>Sort By: 
-                <select id="sort-by">
-                    <option value="time-inc">Time (Inc)</option>
-                    <option value="time-dec">Time (Dec)</option>
-                </select>
-            </p>
-            <p>Use Theme for Post:
-                <select id="post-theme">
-                    <option value="given">Given</option>
-                    <option value="custom">Custom</option>
-                </select>
-            </p>
-            <p>Theme for Page:
-                <select id="page-theme">
-                    <option value="default">Default</option>
-                    <option value="custom">Custom</option>
-                </select>
-            </p>
-            <p>Show Username in Posts:
-                <select id="show-username-posts">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </p>
-            <p>Show Forum Name in Posts:
-                <select id="show-forum-name">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </p>
-            <p>Time Format:
-                <select id="time-format">
-                    <option value="date">Date</option>
-                    <option value="date-time">Date and Time</option>
-                </select>
-            </p>
-            <button>Save My Preferences</button>
-        </div>`
-        let mediv = `<div class="side-info-div">
-            <h1>Me</h1>
-            <p>You are signed in as <span class="username">wait for load</span>.</p>
-            <img src="" class="pfp userpfp" id="usersidepfp" alt=""> <span>@BubbyBabur</span>
-            <p><a id="user-homepage-a" href="./">Homepage</a></p>
-        </div>`;
-        let frienddiv = `<div class="side-info-div">
-            <h1>Friends</h1>
-            <p>You have no friends.</p>
-        </div>`;
-        let forumsdiv = `<div class="side-info-div">
-            <h1>Forums</h1>
-            <p>Forums haven't been set up yet.</p>
-        </div>`;
         
+        let sides = ["format","me","friends","forums"]
+
+        for (let s of sides) {
+            $(`#side-${s}-div`).fadeOut(0);
+        }
+        $("#side-format-div").fadeIn(0);
+
+        for(let s1 of sides){
+            $(`#side-${s1}`).click(() => {
+                for (let s of sides) {
+                    $(`#side-${s}-div`).fadeOut(0);
+                }
+                $(`#side-${s1}-div`).fadeIn(0);
+                
+            });
+        }
+
+        /* 
         $("#side-format").click(() => {
             $("#side-div div:nth-child(2)").remove();
             $("#side-div div:nth-child(1)").after(formatdiv);
@@ -181,24 +145,22 @@ $(() => {
             setupuserinfo();
         })
         $("#side-friends").click(() => {
-            /* $("#side-div:nth-child(2)").remove();
-            $("#side-div:nth-child(1)").after(mediv); */
             $("#side-div div:nth-child(2)").remove();
             $("#side-div div:nth-child(1)").after(frienddiv);
         })
         $("#side-forums").click(() => {
-            /* $("#side-div:nth-child(2)").remove();
-            $("#side-div:nth-child(1)").after(mediv); */
             $("#side-div div:nth-child(2)").remove();
             $("#side-div div:nth-child(1)").after(forumsdiv);
         })
+         */
+
     }
 
     let setupuserinfo = function(){
         $(".userpfp").attr("src", globals.pfp);
         $(".username").text(globals.name);
     }
-
+    
     let onLoad = async function() {
 
         setupuserinfo();
