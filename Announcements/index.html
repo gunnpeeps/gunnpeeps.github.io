@@ -119,11 +119,56 @@
 
 
     <div id="side-div">
-        <div id="user-info-div">
-            You are logged in as Rog Fanog
+        <div id="side-options-div">
+            <span id="side-format">Format</span>
+            <span id="side-me">Me</span>
+            <span id="side-friends">Friends</span>
+            <span id="side-forums">Forums</span>
         </div>
-        <div id="user-info-div">
-            More info
+        <div class="side-info-div">
+            <h1>Format (Not Working)</h1>
+            <p>Sort By: 
+                <select id="sort-by">
+                    <option value="time-inc">Time (Inc)</option>
+                    <option value="time-dec">Time (Dec)</option>
+                </select>
+            </p>
+            <p>Use Theme for Post:
+                <select id="post-theme">
+                    <option value="given">Given</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </p>
+            <p>Theme for Page:
+                <select id="page-theme">
+                    <option value="default">Default</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </p>
+            <p>Show Username in Posts:
+                <select id="show-username-posts">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </p>
+            <p>Show Forum Name in Posts:
+                <select id="show-forum-name">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </p>
+            <p>Time Format:
+                <select id="time-format">
+                    <option value="date">Date</option>
+                    <option value="date-time">Date and Time</option>
+                </select>
+            </p>
+            <button>Save My Preferences</button>
+        </div>
+        <div class="side-info-div">
+            <h1>About Announcements</h1>
+            <p>Announcements are basically forums where we announce stuff. Yep. Usually, only admins can post to
+                Announcements, but during this development phase, everyone can temporarily post.</p>
         </div>
     </div>
 

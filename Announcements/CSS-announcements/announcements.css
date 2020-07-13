@@ -1,15 +1,21 @@
 /* nav bar override */
 .nav-bar {
-    background: #346F4D;
+    background: rgb(255, 31, 0);
+    background: linear-gradient(124deg, rgba(255, 31, 0, 1) 0%, rgba(255, 136, 17, 1) 100%);
     position: relative;
 }
 
+::selection {
+    background: #FF7733;
+    /* WebKit/Blink Browsers */
+}
+
 body {
-    background-color: gray;
+    background-color: #FFF8F0;
 }
 
 #announcements-div {
-    width: 60vw;
+    width: 50vw;
     float:left;
     margin-left: 10vw;
 }
@@ -22,7 +28,7 @@ body {
 }
 
 #announcements-post-div {
-    background-color: var(--liver);
+/*     background-color: var(--liver); */
     margin: 40px 0px 20px 0px;
     padding: 5px;
     clear:both;
@@ -36,11 +42,11 @@ body {
     margin: 5px;
     padding: 2px;
     cursor: pointer;
-    background-color: var(--etonblue);
+    background-color: #FAAC40;
 }
 
 .post-content {
-    background-color: var(--etonblue);
+    background-color: #FFDCB9;
     outline: none;
 }
 #post-message {
@@ -84,12 +90,12 @@ body {
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
 
-    border-right:10px solid var(--champagne);
+    border-right:10px solid #FFC081;
 }
 
 .message-content-wrapper {
     display: block;
-    background-color: var(--champagne);
+    background-color: #FFC081;
     padding: 5px 40px 10px 40px;
 }
 .message-content img {
@@ -100,6 +106,9 @@ body {
     background-color: var(--apricot);
 } */
 .message-username {
+    text-decoration: underline;
+}
+.username {
     text-decoration: underline;
 }
 .message-userat::before {
@@ -134,22 +143,69 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    border: 2px solid #8F4700;
+}
+
+#usersidepfp {
+    vertical-align: middle;
+}
+
+#user-homepage-a {
+    color: black;
 }
 
 #side-div {
     display: block;
     float: right;
-    background-color: var(--etonblue);
-    width: 20vw;
-    height:100vh;
+    background-color: #F4D06F;
+    width: 30vw;
     margin:0px;
 }
 
-#user-info-div {
+#side-options-div {
+    border-bottom: 4px solid black;
+    margin: 30px 20px 20px 20px;
+    padding: 5px;
+}
+
+#side-options-div span {
+    margin: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.side-info-div {
     display: block;
-    background-color: var(--apricot);
-    width: 15vw;
+    background-color: #FAAC40;
+    width: 22vw;
     margin: 20px auto;
-    padding: 20px;
-    height: 20vh;
+    padding: 10px 30px 30px 30px;
+}
+
+.side-info-div h1 {
+    margin: 20px 0px;
+}
+.side-info-div p {
+    margin: 8px 0px;
+}
+.side-info-div button {
+    border:none;
+    margin: 15px 0px;
+    padding: 5px;
+    outline: none;
+    background-color: #FFDCB9;
+    cursor: pointer;
+}
+
+select {
+    background-color: #FFDCB9;
+    border: none;
+    outline: none;
+    margin: 0px 10px;
+    padding: 2px;
+}
+
+option:checked,option:hover {
+    color: white;
+    background-color: #000000;
 }
