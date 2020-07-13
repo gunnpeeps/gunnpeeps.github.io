@@ -74,8 +74,20 @@ body {
 }
  */
 #announcements-content-div {
-    height: 60vh;
+    height: 40vh;
     overflow:scroll;
+}
+
+#devnote {
+    background-color: #FF6262;
+    padding: 15px;
+    margin: 20px;
+}
+#devnote h1 {
+    margin: 0px;
+}
+#devnote p {
+    margin: 0px;
 }
  
 .message {
