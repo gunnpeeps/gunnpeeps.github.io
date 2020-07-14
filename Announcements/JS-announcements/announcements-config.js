@@ -47,7 +47,7 @@ async function onSuccess(googleUser) {
         })
     }
 
-    let returned = await fetch("https://gunnpeeps.herokuapp.com/users", options);
+    let returned = await fetch("https://gunnpeepsback.glitch.me/users", options);
     let data = await returned.json();
     console.log(data);
     if (data.signedIn) {
@@ -74,7 +74,7 @@ $(() => {
 
     let getAnnounce = async function () {
         if (globals.signedIn) {
-            let returned = await fetch("https://gunnpeeps.herokuapp.com/announcements");
+            let returned = await fetch("https://gunnpeepsback.glitch.me/announcements");
             let announcements = await returned.json();
             announcements.sort((a, b) => {
                 return a.timestamp - b.timestamp
@@ -193,7 +193,7 @@ $(() => {
                     })
                 }
 
-                let returned = await fetch("https://gunnpeeps.herokuapp.com/announcements", options);
+                let returned = await fetch("https://gunnpeepsback.glitch.me/announcements", options);
                 returned = await returned.json();
                 console.log(returned);
                 if(returned.success){

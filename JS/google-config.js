@@ -41,7 +41,7 @@ async function onSuccess(googleUser) {
         })
     }
 
-    let returned = await fetch("https://gunnpeeps.herokuapp.com/users", options);
+    let returned = await fetch("https://gunnpeepsback.glitch.me/users", options);
     console.log(returned.json);
     let data = await returned.json();
     console.log(data);
