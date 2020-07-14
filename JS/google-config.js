@@ -51,6 +51,8 @@ async function onSuccess(googleUser) {
         globals.name = profile.getName();
         globals.email = profile.getEmail();
         globals.pfp = profile.getImageUrl();
+        globals.fn = profile.getGivenName();
+        globals.ln = profile.getFamilyName();
     }
 }
 

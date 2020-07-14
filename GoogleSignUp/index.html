@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/CSS/main.css">
     <link rel="stylesheet" type="text/css" href="/CSS/slidersgradients.css">
     <link rel="stylesheet" type="text/css" href="/CSS/navbar.css">
-    <link rel="stylesheet" type="text/css" href="./CSS-UserSignIn/UserSignIn.css">
+    <link rel="stylesheet" type="text/css" href="./CSS-GSU/GSU.css">
 
     <!-- Metas -->
     <!--meta name="google-signin-scope" content="profile email"-->
@@ -55,7 +55,7 @@
     <script src="/JS/gradient.js"></script>
     <script src="/JS/slider.js"></script>
     <script src="/JS/menu.js"></script>
-    <script src="./JS-UserSignIn/UserSignIn.js"></script>
+    <script src="./JS-GSU/GSU.js"></script>
 
 </head>
 
@@ -98,28 +98,27 @@
     <div id="header-logo-div">
         <a href="./"><img id="header-logo" src="/Images/Logos/WhiteLogo.png" alt="GP"></a>
         <a href="/">
-            <div id="header-gunnpeeps">Sign Up</div>
+            <div id="header-gunnpeeps">Sign Up With Google</div>
         </a>
     </div>
 
     <div id="sign-in-google"></div>
-
-    <div id="OR">-OR-</div>
+    <div id="sign-out-google" onclick="signOutCurr()">Sign Up With Other Account</div>
 
     <div id="sign-up-form">
-        <h1>Sign Up Manually</h1>
+        <h1>Signing Up with Google</h1>
         <div class="form-input">
             <span>Email Address</span>
-            <input id="email-address" type="text" placeholder="example@site.com">
+            <input id="email-address" type="text" value="example@site.com" disabled>
             <!--span class="errormsg">Error: Email taken.</span-->
         </div>
         <div class="form-input">
             <span>Display First Name (What People Will See You As)</span>
-            <input type="text" placeholder="Test">
+            <input id="fn" type="text" value="Test">
         </div>
         <div class="form-input">
             <span>Display Last Name (What People Will See You As)</span>
-            <input type="text" placeholder="User">
+            <input id="ln" type="text" value="User">
         </div>
         <div class="form-input">
             <span>Username (Your unique @address)</span>
@@ -133,12 +132,12 @@
             <span>Password (Verify)</span>
             <input type="password" placeholder="password1234">
         </div>
-        <button>Submit</button>
+        <button id="submit">Submit</button>
         <div id="footer"></div>
     </div>
 
 
-    
+
 
 </body>
 

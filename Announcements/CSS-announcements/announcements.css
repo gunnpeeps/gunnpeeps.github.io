@@ -76,6 +76,8 @@ body {
 #announcements-content-div {
     height: 40vh;
     overflow:scroll;
+    flex-direction: column-reverse;
+    display: flex;
 }
 
 #devnote {

@@ -54,6 +54,8 @@ async function onSuccess(googleUser) {
         globals.signedIn = true;
         globals.id_token = id_token;
         globals.name = profile.getName();
+        globals.fn = profile.getGivenName();
+        globals.ln = profile.getFamilyName();
         globals.email = profile.getEmail();
         globals.pfp = profile.getImageUrl();
     }
@@ -219,17 +221,4 @@ $(() => {
 
     $("#refresh").click(getAnnounce);
     
-});
-
-$(function () {
-    /* let g1 = new Gradient("gradient-wrapper-heading");
-    let g2 = new Gradient("gradient-wrapper-header");
-    let gs = new GradientGroup([g1, g2]);
-    gs.update();
-    let timer = new Timed(2000, [gs]);
-    timer.run(); */
-
-    
-
-
 });

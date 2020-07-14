@@ -7,7 +7,12 @@ function renderButton() {
         'height': 50,
         'longtitle': true,
         'theme': 'dark',
-        'onsuccess': onSuccess,
+        'onsuccess': customOnSignIn,
         'onfailure': onFailure
     });
+}
+
+async function customOnSignIn(GoogleUser) {
+    await onSuccess(GoogleUser);
+    window.location = "/GoogleSignUp";
 }
