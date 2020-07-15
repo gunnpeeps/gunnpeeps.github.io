@@ -217,7 +217,7 @@ $(() => {
             clearInterval(curr);
             await onLoad();
         }
-    }, 200);
+    }, 1500);
 
     $("#refresh").click(getAnnounce);
     
