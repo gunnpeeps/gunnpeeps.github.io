@@ -50,12 +50,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.4/vuetify.min.js"></script>
 
     <!-- JS -->
-    <script src="/JS/google-config.js"></script>
+    <script src="./JS-GSU/GSU.js"></script>
     <script src="/JS/timed.js"></script>
     <script src="/JS/gradient.js"></script>
     <script src="/JS/slider.js"></script>
     <script src="/JS/menu.js"></script>
-    <script src="./JS-GSU/GSU.js"></script>
 
 </head>
 
@@ -109,16 +108,16 @@
         <h1>Signing Up with Google</h1>
         <div class="form-input">
             <span>Email Address</span>
-            <input id="email-address" type="text" value="example@site.com" disabled>
-            <!--span class="errormsg">Error: Email taken.</span-->
+            <input id="email-address" class="incorrect" type="text" value="Error: Wait to load." disabled>
+            <span class="errormsg">Error: Not Signed In to Google.</span>
         </div>
         <div class="form-input">
             <span>Display First Name (What People Will See You As)</span>
-            <input id="fn" type="text" value="Test">
+            <input id="fn" type="text" placeholder="Test">
         </div>
         <div class="form-input">
             <span>Display Last Name (What People Will See You As)</span>
-            <input id="ln" type="text" value="User">
+            <input id="ln" type="text" placeholder="User">
         </div>
         <div class="form-input">
             <span>Username (Your unique @address)</span>
@@ -126,11 +125,11 @@
         </div>
         <div class="form-input">
             <span>Password</span>
-            <input type="password" placeholder="password1234">
+            <input id="password" type="password" placeholder="password1234">
         </div>
         <div class="form-input">
             <span>Password (Verify)</span>
-            <input type="password" placeholder="password1234">
+            <input id="password-verify" type="password" placeholder="password1234">
         </div>
         <button id="submit">Submit</button>
         <div id="footer"></div>

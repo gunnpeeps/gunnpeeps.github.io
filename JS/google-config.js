@@ -37,22 +37,27 @@ async function onSuccess(googleUser) {
         mode: 'cors',
         body: JSON.stringify({
             token: id_token,
+            signingwithgoogle: true,
             status: "sent"
         })
     }
 
-    let returned = await fetch("https://gunnpeepsback.glitch.me/users", options);
+    let returned = await fetch("https://gunnpeepsback.glitch.me/user-sign-in", options);
     console.log(returned.json);
     let data = await returned.json();
     console.log(data);
     if (data.signedIn) {
         globals.signedIn = true;
         globals.id_token = id_token;
-        globals.name = profile.getName();
+        globals.name = data.user.name;
         globals.email = profile.getEmail();
         globals.pfp = profile.getImageUrl();
-        globals.fn = profile.getGivenName();
-        globals.ln = profile.getFamilyName();
+        globals.atname = data.user.atname;
+        globals.ssid = data.user.ssid;
+        globals.announcementsallowed = data.user.announcementsallowed;
+        globals.createForumsAllowed = data.user.createForumsAllowed;
+    } else {
+        window.location.href = "/GoogleSignUp/"
     }
 }
 

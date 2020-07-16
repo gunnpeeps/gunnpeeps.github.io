@@ -43,21 +43,26 @@ async function onSuccess(googleUser) {
         mode: 'cors',
         body: JSON.stringify({
             token: id_token,
+            signingwithgoogle: true,
             status: "sent"
         })
     }
 
-    let returned = await fetch("https://gunnpeepsback.glitch.me/users", options);
+    let returned = await fetch("https://gunnpeepsback.glitch.me/user-sign-in", options);
     let data = await returned.json();
     console.log(data);
     if (data.signedIn) {
         globals.signedIn = true;
         globals.id_token = id_token;
-        globals.name = profile.getName();
-        globals.fn = profile.getGivenName();
-        globals.ln = profile.getFamilyName();
+        globals.name = data.user.name;
         globals.email = profile.getEmail();
         globals.pfp = profile.getImageUrl();
+        globals.atname = data.user.atname;
+        globals.ssid = data.user.ssid;
+        globals.announcementsallowed = data.user.announcementsallowed;
+        globals.createForumsAllowed = data.user.createForumsAllowed;
+    } else {
+        window.location.href = "/GoogleSignUp/"
     }
 
 }
@@ -92,6 +97,7 @@ $(() => {
                 }
                 let currMsg = $("<div>").addClass("message").attr("data-msgid",a._id);
                 let t = new Date(a.timestamp);
+
                 currMsg.html(
                 `<div class="user-icon-wrapper">
                     <img class="pfp" src="${a.imgurl}" alt="">
@@ -100,9 +106,9 @@ $(() => {
                 <div class="message-content-wrapper">
                     <div class="message-user">
                         <span class="message-username">${a.name}</span> 
-                        <span class="message-userat">BubbyBabur</span> 
+                        <span class="message-userat">${a.atname}</span> 
                         <span class="message-forum">Announcements</span>
-                        <span class="message-time">${t.toDateString()}</span>
+                        <span class="message-time updating-time" data-timestamp="${a.timestamp}">${formatPastTime( t )}</span>
                     </div>
                     <div class="message-content">
                         ${a.post}
@@ -136,31 +142,57 @@ $(() => {
             });
         }
 
-        /* 
-        $("#side-format").click(() => {
-            $("#side-div div:nth-child(2)").remove();
-            $("#side-div div:nth-child(1)").after(formatdiv);
-        })
-        $("#side-me").click(() => {
-            $("#side-div div:nth-child(2)").remove();
-            $("#side-div div:nth-child(1)").after(mediv);
-            setupuserinfo();
-        })
-        $("#side-friends").click(() => {
-            $("#side-div div:nth-child(2)").remove();
-            $("#side-div div:nth-child(1)").after(frienddiv);
-        })
-        $("#side-forums").click(() => {
-            $("#side-div div:nth-child(2)").remove();
-            $("#side-div div:nth-child(1)").after(forumsdiv);
-        })
-         */
-
     }
 
     let setupuserinfo = function(){
         $(".userpfp").attr("src", globals.pfp);
         $(".username").text(globals.name);
+        $(".atname").text(globals.atname);
+    }
+
+    let formatDateTime = function(date){
+
+        let am = true;
+        let hr = 0;
+        if(date.getHours() > 12){
+            hr = date.getHours() - 12;
+            am = false;
+        } else {
+            hr = date.getHours();
+            am = true;
+        }
+
+        return hr + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + (am ? "AM" : "PM") + ", " +
+        ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec"][date.getMonth()] + " " 
+        + date.getDay();
+    }
+
+    let formatPastTime = function(date){
+        let curr = new Date( Date.now() );
+        if(date.getFullYear() === curr.getFullYear()){
+            if(date.getMonth() === curr.getMonth()){
+                if(date.getDate() == curr.getDate()){
+                    if(date.getHours() === curr.getHours()){
+                        if(date.getMinutes() === curr.getMinutes()){
+                            return `${curr.getSeconds() - date.getSeconds()} second(s) ago`
+                        }
+                        return `${curr.getMinutes() - date.getMinutes()} minute(s) ago`
+                    }
+                    return `${curr.getHours() - date.getHours()} hour(s) ago`
+                }
+                return `${curr.getDate() - date.getDate()} day(s) ago`;
+            }
+            return formatDateTime(date);
+        }
+        return formatDateTime(date);
+    }
+
+    let updateDates = function(){
+        $(".current-date").html(formatDateTime(new Date(Date.now())));
+        $(".updating-time").each(function(){
+            let d = new Date( parseInt( $(this).attr("data-timestamp") ));
+            $(this).html(formatPastTime(d));
+        })
     }
     
     let onLoad = async function() {
@@ -169,7 +201,9 @@ $(() => {
         setupside();
         $("#announcements-content-div").empty();
         
-        $(".current-date").html(new Date(Date.now()).toDateString());
+        setInterval(() => {
+            updateDates();
+        }, 1000);
 
         $("#post-button").click(() => {
             if(globals.posting){
@@ -191,6 +225,7 @@ $(() => {
                     body: JSON.stringify({
                         token: globals.id_token,
                         post: $(".post-content").html(),
+                        signingwithgoogle: true,
                         status: "sent"
                     })
                 }
