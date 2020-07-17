@@ -17,6 +17,9 @@
   width: 100vw;
   height: 20vh;
 }
+h1 {
+  margin: 0px;
+}
 
 /* title and subtitle */
 .title-container {

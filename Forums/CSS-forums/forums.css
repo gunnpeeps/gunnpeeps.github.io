@@ -59,3 +59,7 @@
     display: block;
     text-transform: capitalize;
 }
+
+h1 {
+    margin: 0px;
+}

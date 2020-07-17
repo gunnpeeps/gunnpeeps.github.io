@@ -1,0 +1,91 @@
+
+body {
+    background: #FAEFDB;
+}
+
+#sign-in-google {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    transform: none;
+    margin: 8vh 0px 30px 0px;
+}
+
+#OR {
+    font-size: 30px;
+    text-align: center;
+}
+
+#sign-up-form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    width: 30vw;
+}
+#sign-up-form h1 {
+    font-size: 50px;
+    text-align: center;
+}
+#sign-up-form button {
+    background-color: #F0E2A3;
+    outline: none;
+    border:none;
+    padding: 15px;
+    font-size: 20px;
+    float:right;
+    cursor: pointer;
+}
+
+#footer {
+    clear:both;
+    height:10px;
+}
+
+.form-input {
+    margin: 40px 0px;
+}
+
+.form-input span {
+    font-size: 18px;
+}
+
+.form-input input {
+    border: 0px;
+    padding: 8px;
+    font-size: 20px;
+    width: 30vw;
+    background-color:#F9D4BB;
+    outline: none;
+}
+
+.form-input input.incorrect {
+    outline: 3px rgba(209, 66, 66, 0.5) solid;
+}
+.errormsg {
+    color:rgb(209, 66, 66);
+}
+
+.abcRioButton {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-bar {
+    background: rgb(10, 153, 86);
+    background: linear-gradient(124deg, rgba(10, 153, 86, 1) 0%, rgba(155, 210, 155, 1) 66%, rgba(164, 210, 143, 1) 100%);
+    position: relative;
+    width: 100vw;
+    z-index: 5;
+}
+
+/* Slider */
+/* slider area */
+
+#gradient-wrapper-header {
+    width: 100vw;
+    height: 10vh;
+}
+
+#gradient-wrapper-header-backup {
+    height: 10vh;
+}
