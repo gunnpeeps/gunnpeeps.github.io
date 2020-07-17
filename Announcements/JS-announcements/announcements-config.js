@@ -3,7 +3,12 @@ let globals = {
     signedIn: false,
     id_token: false,
     buttonrendered: false,
-    posting: false
+    posting: false,
+    sort: (a,b) => {return a.timestamp - b.timestamp},
+    spacing: "spacious",
+    timeformat: "smart",
+    atnameshown: true,
+    forumshown: true
 }
 
 function renderButton() {
@@ -79,13 +84,51 @@ function signOut() {
 }
 $(() => {
 
+
+    let resetAnnounce = async function() {
+        if (globals.signedIn) {
+            let returned = await fetch("https://gunnpeepsback.glitch.me/announcements");
+            let announcements = await returned.json();
+            announcements.sort(globals.sort);
+
+            let wrapper = $("#announcements-content-div");
+            wrapper.empty();
+
+            for (let a of announcements) {
+
+                let currMsg = $("<div>").addClass("message").attr("data-msgid", a._id);
+                let t = new Date(a.timestamp);
+
+                currMsg.html(
+                    `<div class="user-icon-wrapper">
+                    <img class="pfp" src="${a.imgurl}" alt="">
+                </div>
+                <div class="smoltri"></div>
+                <div class="message-content-wrapper">
+                    <div class="message-user">
+                        <span class="message-username">${a.name}</span> 
+                        <span class="message-userat" ${globals.atnameshown ? "" : "hidden"}>${a.atname}</span> 
+                        <span class="message-forum" ${globals.forumshown ? "" : "hidden"}>Announcements</span>
+                        <span class="message-time updating-time" data-timestamp="${a.timestamp}">${formatPastTime(t)}</span>
+                    </div>
+                    <div class="message-content ${globals.spacing}-content">
+                        ${a.post}
+                    </div>
+                </div>`);
+                wrapper.prepend(currMsg);
+            }
+
+
+            return true;
+        }
+        return false;
+    }
+
     let getAnnounce = async function () {
         if (globals.signedIn) {
             let returned = await fetch("https://gunnpeepsback.glitch.me/announcements");
             let announcements = await returned.json();
-            announcements.sort((a, b) => {
-                return a.timestamp - b.timestamp
-            })
+            announcements.sort(globals.sort);
             
             let wrapper = $("#announcements-content-div");
             /*wrapper.empty();*/
@@ -106,11 +149,11 @@ $(() => {
                 <div class="message-content-wrapper">
                     <div class="message-user">
                         <span class="message-username">${a.name}</span> 
-                        <span class="message-userat">${a.atname}</span> 
-                        <span class="message-forum">Announcements</span>
+                        <span class="message-userat" ${globals.atnameshown ? "" : "hidden"}>${a.atname}</span> 
+                        <span class="message-forum" ${globals.forumshown ? "" : "hidden"}>Announcements</span>
                         <span class="message-time updating-time" data-timestamp="${a.timestamp}">${formatPastTime( t )}</span>
                     </div>
-                    <div class="message-content">
+                    <div class="message-content ${globals.spacing}-content">
                         ${a.post}
                     </div>
                 </div>`);
@@ -142,6 +185,77 @@ $(() => {
             });
         }
 
+        $("#sort-by").change(() => {
+            if($("#sort-by").val() === "time-inc"){
+                globals.sort = (a,b) => {return a.timestamp - b.timestamp};
+                resetAnnounce();
+            }
+            else if ($("#sort-by").val() === "time-dec") {
+                globals.sort = (a, b) => { return b.timestamp - a.timestamp };
+                resetAnnounce();
+            }
+        })
+
+        $("#chat-format").change(() => {
+            if($("#chat-format").val() === "up"){
+                $("#announcements-content-div").css({ flexDirection: "column-reverse"});
+            } else if ($("#chat-format").val() === "down") {
+                $("#announcements-content-div").css({ flexDirection: "column" });
+            }
+        })
+        
+        $("#chat-spacing").change(() => {
+            if ($("#chat-spacing").val() === "spacious") {
+                globals.spacing = "spacious";
+            } else if ($("#chat-spacing").val() === "comfy") {
+                globals.spacing = "comfy";
+            } else if ($("#chat-spacing").val() === "compact") {
+                globals.spacing = "compact";
+            }
+            resetAnnounce();
+        })
+
+        $("#time-format").change(() => {
+            if ($("#time-format").val() === "smart") {
+                globals.timeformat = "smart";
+            } else if ($("#time-format").val() === "date-time") {
+                globals.timeformat = "date-time";
+            } else if ($("#time-format").val() === "date") {
+                globals.timeformat = "date";
+            }
+            updateDates();
+        })
+
+        $("#show-atname-posts").change(() => {
+            if($("#show-atname-posts").val() === "yes"){
+                globals.atnameshown = true;
+                $(".message-userat").show();
+            } else if ($("#show-atname-posts").val() === "no") {
+                globals.atnameshown = false;
+                $(".message-userat").hide();
+            }
+        })
+
+        $("#show-atname-posts").change(() => {
+            if ($("#show-atname-posts").val() === "yes") {
+                globals.atnameshown = true;
+                $(".message-userat").show();
+            } else if ($("#show-atname-posts").val() === "no") {
+                globals.atnameshown = false;
+                $(".message-userat").hide();
+            }
+        })
+
+        $("#show-forum-name").change(() => {
+            if ($("#show-forum-name").val() === "yes") {
+                globals.forumshown = true;
+                $(".message-forum").show();
+            } else if ($("#show-forum-name").val() === "no") {
+                globals.forumshown = false;
+                $(".message-forum").hide();
+            }
+        })
+
     }
 
     let setupuserinfo = function(){
@@ -164,23 +278,25 @@ $(() => {
 
         return hr + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + (am ? "AM" : "PM") + ", " +
         ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep","Oct", "Nov", "Dec"][date.getMonth()] + " " 
-        + date.getDay();
+        + date.getDate();
     }
+    
 
     let formatPastTime = function(date){
-        let curr = new Date( Date.now() );
-        if(date.getFullYear() === curr.getFullYear()){
-            if(date.getMonth() === curr.getMonth()){
-                if(date.getDate() == curr.getDate()){
-                    if(date.getHours() === curr.getHours()){
-                        if(date.getMinutes() === curr.getMinutes()){
-                            return `${curr.getSeconds() - date.getSeconds()} second(s) ago`
+        let curr = new Date( Date.now() - date.getTime() );
+        console.log(curr.getHours());
+        if (curr.getFullYear() === 1969) {
+            if(curr.getMonth() === 11){
+                if(curr.getDate() === 31){
+                    if(curr.getHours() === 16){
+                        if(curr.getMinutes() === 0){
+                            return `${curr.getSeconds()} second(s) ago`
                         }
-                        return `${curr.getMinutes() - date.getMinutes()} minute(s) ago`
+                        return `${curr.getMinutes()} minute(s) ago`
                     }
-                    return `${curr.getHours() - date.getHours()} hour(s) ago`
+                    return `${curr.getHours() - 16} hour(s) ago`
                 }
-                return `${curr.getDate() - date.getDate()} day(s) ago`;
+                return `${curr.getDate()} day(s) ago`;
             }
             return formatDateTime(date);
         }
@@ -191,10 +307,17 @@ $(() => {
         $(".current-date").html(formatDateTime(new Date(Date.now())));
         $(".updating-time").each(function(){
             let d = new Date( parseInt( $(this).attr("data-timestamp") ));
-            $(this).html(formatPastTime(d));
+            if(globals.timeformat === "smart"){
+                $(this).html(formatPastTime(d));
+            } else if (globals.timeformat === "date-time") {
+                
+                $(this).html(formatDateTime(d));
+            } else if (globals.timeformat === "date") {
+                $(this).html(d.toDateString());
+            }
         })
     }
-    
+
     let onLoad = async function() {
 
         setupuserinfo();
@@ -244,7 +367,7 @@ $(() => {
 
         setInterval(async () => {
             await getAnnounce();
-        }, 500);
+        }, 1500);
     }
 
     let curr = setInterval(async () => {

@@ -7,7 +7,6 @@
 
 ::selection {
     background: #FF7733;
-    /* WebKit/Blink Browsers */
 }
 
 body {
@@ -63,18 +62,8 @@ body {
     cursor: pointer;
 }
 
-/* #refresh {
-    background-color: var(--etonblue);
-    cursor: pointer;
-}
-
-#post-button {
-    background-color: var(--etonblue);
-    cursor:pointer;
-}
- */
 #announcements-content-div {
-    height: 40vh;
+    height: 50vh;
     overflow:scroll;
     flex-direction: column-reverse;
     display: flex;
@@ -96,8 +85,7 @@ body {
     display: flex;
     margin: 10px 10px;
     padding: 5px;
-/*     background-color: var(--flax);
- */}
+}
 
 .smoltri {
     width: 0;
@@ -116,6 +104,15 @@ body {
 .message-content img {
     max-width: 500px;
     height: auto;
+}
+.spacious-content > * {
+    margin: 10px 0px;
+}
+.comfy-content>* {
+    margin: 5px 0px;
+}
+.compact-content>* {
+    margin: 1px 0px;
 }
 /* .message-user {
     background-color: var(--apricot);
