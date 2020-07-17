@@ -6,12 +6,8 @@
 }
 
 ::selection {
-<<<<<<< HEAD
   background: #FF7733;
   /* WebKit/Blink Browsers */
-=======
-    background: #FF7733;
->>>>>>> c4b335682c39080b28632381bfd7283d4a1ca0ac
 }
 
 body {
@@ -71,15 +67,10 @@ body {
 }
 
 #announcements-content-div {
-<<<<<<< HEAD
-  height: 40vh;
-  overflow: scroll;
-=======
     height: 50vh;
     overflow:scroll;
     flex-direction: column-reverse;
     display: flex;
->>>>>>> c4b335682c39080b28632381bfd7283d4a1ca0ac
 }
 
 #devnote {
@@ -97,17 +88,11 @@ body {
 }
 
 .message {
-<<<<<<< HEAD
   display: flex;
   margin: 10px 10px;
   padding: 5px;
   /*     background-color: var(--flax);
  */
-=======
-    display: flex;
-    margin: 10px 10px;
-    padding: 5px;
->>>>>>> c4b335682c39080b28632381bfd7283d4a1ca0ac
 }
 
 .smoltri {
@@ -128,9 +113,6 @@ body {
   max-width: 500px;
   height: auto;
 }
-<<<<<<< HEAD
-
-=======
 .spacious-content > * {
     margin: 10px 0px;
 }
@@ -140,7 +122,6 @@ body {
 .compact-content>* {
     margin: 1px 0px;
 }
->>>>>>> c4b335682c39080b28632381bfd7283d4a1ca0ac
 /* .message-user {
     background-color: var(--apricot);
 } */
