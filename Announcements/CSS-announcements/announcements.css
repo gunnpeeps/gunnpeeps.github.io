@@ -1,66 +1,69 @@
 /* nav bar override */
 .nav-bar {
-    background: rgb(255, 31, 0);
-    background: linear-gradient(124deg, rgba(255, 31, 0, 1) 0%, rgba(255, 136, 17, 1) 100%);
-    position: relative;
+  background: rgb(255, 31, 0);
+  background: linear-gradient(124deg, rgba(255, 31, 0, 1) 0%, rgba(255, 136, 17, 1) 100%);
+  position: relative;
 }
 
 ::selection {
-    background: #FF7733;
-    /* WebKit/Blink Browsers */
+  background: #FF7733;
+  /* WebKit/Blink Browsers */
 }
 
 body {
-    background-color: #FFF8F0;
+  background-color: #FFF8F0;
 }
 
 #announcements-div {
-    width: 50vw;
-    float:left;
-    margin-left: 10vw;
+  width: 50vw;
+  float: left;
+  margin-left: 10vw;
 }
 
 #announcements-options-div {
-    /* background-color: var(--liver); */
-    border-bottom: 4px solid black;
-    margin: 40px 0px 20px 0px;
-    padding: 5px;
+  /* background-color: var(--liver); */
+  border-bottom: 4px solid black;
+  margin: 40px 0px 20px 0px;
+  padding: 5px;
 }
 
 #announcements-post-div {
-/*     background-color: var(--liver); */
-    margin: 10px 0px 20px 0px;
-    padding: 5px;
-    clear:both;
+  /*     background-color: var(--liver); */
+  margin: 10px 0px 20px 0px;
+  padding: 5px;
+  clear: both;
 }
+
 .post-post-button {
-    clear:both;
-    position:relative;
-    float:right;
-    width: auto;
-    display: block;
-    margin: 5px;
-    padding: 2px;
-    cursor: pointer;
-    background-color: #FAAC40;
+  clear: both;
+  position: relative;
+  float: right;
+  width: auto;
+  display: block;
+  margin: 5px;
+  padding: 2px;
+  cursor: pointer;
+  background-color: #FAAC40;
 }
 
 .post-content {
-    background-color: #FFDCB9;
-    outline: none;
+  background-color: #FFDCB9;
+  padding: 0.5rem;
+  outline: none;
 }
+
 #post-message {
-    margin: 10px 10px 0px 10px;
+  margin: 10px 10px 0px 10px;
 }
 
 #post-message-content-wrapper {
-    padding: 5px 40px 0px 40px;
+  padding: 5px 40px 0px 40px;
 }
 
 #announcements-options-div span {
-    margin: 10px;
-    font-size: 20px;
-    cursor: pointer;
+  margin: 10px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 /* #refresh {
@@ -74,151 +77,165 @@ body {
 }
  */
 #announcements-content-div {
-    height: 40vh;
-    overflow:scroll;
+  height: 40vh;
+  overflow: scroll;
 }
 
 #devnote {
-    background-color: #FF6262;
-    padding: 15px;
-    margin: 20px;
+  background-color: #FF6262;
+  padding: 15px;
+  margin: 20px;
 }
+
 #devnote h1 {
-    margin: 0px;
+  margin: 0px;
 }
+
 #devnote p {
-    margin: 0px;
+  margin: 0px;
 }
- 
+
 .message {
-    display: flex;
-    margin: 10px 10px;
-    padding: 5px;
-/*     background-color: var(--flax);
- */}
+  display: flex;
+  margin: 10px 10px;
+  padding: 5px;
+  /*     background-color: var(--flax);
+ */
+}
 
 .smoltri {
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-
-    border-right:10px solid #FFC081;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #FFC081;
 }
 
 .message-content-wrapper {
-    display: block;
-    background-color: #FFC081;
-    padding: 5px 40px 10px 40px;
+  display: block;
+  background-color: #FFC081;
+  padding: 5px 40px 10px 40px;
 }
+
 .message-content img {
-    max-width: 500px;
-    height: auto;
+  max-width: 500px;
+  height: auto;
 }
+
 /* .message-user {
     background-color: var(--apricot);
 } */
 .message-username {
-    text-decoration: underline;
+  text-decoration: underline;
 }
+
 .username {
-    text-decoration: underline;
+  text-decoration: underline;
 }
+
 .message-userat::before {
-    content: "@"
+  content: "@"
 }
+
 .message-userat {
-    color:#686868;
-    font-style: italic;
+  color: #686868;
+  font-style: italic;
 }
+
 .message-forum::before {
-    content: " > "
+  content: " > "
 }
+
 .message-forum {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
+
 .message-time::before {
-    content: " . "
+  content: " . "
 }
+
 .message-time {
-    color:#686868;
+  color: #686868;
 }
 
 .user-icon-wrapper {
-    display: block;
-    float:left;
-    padding: 2px;
-/*     background-color: var(--etonblue);
- */}
+  display: block;
+  float: left;
+  padding: 2px;
+  /*     background-color: var(--etonblue);
+ */
+}
 
 .pfp {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid #8F4700;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #8F4700;
 }
 
 #usersidepfp {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 #user-homepage-a {
-    color: black;
+  color: black;
 }
 
 #side-div {
-    display: block;
-    float: right;
-    background-color: #F4D06F;
-    width: 30vw;
-    margin:0px;
+  display: block;
+  float: right;
+  background-color: #F4D06F;
+  width: 30vw;
+  margin: 0px;
 }
 
 #side-options-div {
-    border-bottom: 4px solid black;
-    margin: 30px 20px 20px 20px;
-    padding: 5px;
+  border-bottom: 4px solid black;
+  margin: 30px 20px 20px 20px;
+  padding: 5px;
 }
 
 #side-options-div span {
-    margin: 20px;
-    font-size: 20px;
-    cursor: pointer;
+  margin: 20px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .side-info-div {
-    display: block;
-    background-color: #FAAC40;
-    width: 22vw;
-    margin: 20px auto;
-    padding: 10px 30px 30px 30px;
+  display: block;
+  background-color: #FAAC40;
+  width: 22vw;
+  margin: 20px auto;
+  padding: 10px 30px 30px 30px;
 }
 
 .side-info-div h1 {
-    margin: 20px 0px;
+  margin: 20px 0px;
 }
+
 .side-info-div p {
-    margin: 8px 0px;
+  margin: 8px 0px;
 }
+
 .side-info-div button {
-    border:none;
-    margin: 15px 0px;
-    padding: 5px;
-    outline: none;
-    background-color: #FFDCB9;
-    cursor: pointer;
+  border: none;
+  margin: 15px 0px;
+  padding: 5px;
+  outline: none;
+  background-color: #FFDCB9;
+  cursor: pointer;
 }
 
 select {
-    background-color: #FFDCB9;
-    border: none;
-    outline: none;
-    margin: 0px 10px;
-    padding: 2px;
+  background-color: #FFDCB9;
+  border: none;
+  outline: none;
+  margin: 0px 10px;
+  padding: 2px;
 }
 
-option:checked,option:hover {
-    color: white;
-    background-color: #000000;
+option:checked, option:hover {
+  color: white;
+  background-color: #000000;
 }
