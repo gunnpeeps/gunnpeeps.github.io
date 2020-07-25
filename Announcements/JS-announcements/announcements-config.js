@@ -284,9 +284,9 @@ $(() => {
 
     let formatPastTime = function(date){
         let curr = new Date( Date.now() - date.getTime() );
-        console.log(curr.getHours());
-        if (curr.getFullYear() === 1969) {
-            if(curr.getMonth() === 11){
+        console.log(curr.getMonth());
+        if (curr.getFullYear() === 1969 || curr.getFullYear() === 1970) {
+            if(curr.getMonth() === 11 || curr.getMonth() === 0){
                 if(curr.getDate() === 31){
                     if(curr.getHours() === 16){
                         if(curr.getMinutes() === 0){
