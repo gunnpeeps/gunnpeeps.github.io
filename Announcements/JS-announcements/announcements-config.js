@@ -50,7 +50,7 @@ async function onSuccess(googleUser) {
             token: id_token,
             signingwithgoogle: true,
             status: "sent"
-        })
+        }),
     }
 
     let returned = await fetch("https://gunnpeepsback.glitch.me/user-sign-in", options);
@@ -125,6 +125,7 @@ $(() => {
     }
 
     let getAnnounce = async function () {
+        console.trace("Get Announce")
         if (globals.signedIn) {
             let returned = await fetch("https://gunnpeepsback.glitch.me/announcements");
             let announcements = await returned.json();
@@ -350,7 +351,8 @@ $(() => {
                         post: $(".post-content").html(),
                         signingwithgoogle: true,
                         status: "sent"
-                    })
+                    }),
+                    
                 }
 
                 let returned = await fetch("https://gunnpeepsback.glitch.me/announcements", options);
