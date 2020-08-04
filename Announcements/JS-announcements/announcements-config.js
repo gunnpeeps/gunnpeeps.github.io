@@ -1,123 +1,29 @@
 
-let globals = {
+globals = {
     signedIn: false,
     id_token: false,
     buttonrendered: false,
     posting: false,
-    sort: (a,b) => {return a.timestamp - b.timestamp},
+    sort: (a, b) => {
+        return a.data().Timestamp - b.data().Timestamp
+    },
     spacing: "spacious",
     timeformat: "smart",
     atnameshown: true,
-    forumshown: true
+    forumshown: true,
 }
 
-function renderButton() {
-    if(!globals.buttonrendered){
-        globals.buttonrendered = true;
-        gapi.signin2.render('sign-in-google', {
-            'scope': 'profile email',
-            'width': 240,
-            'height': 50,
-            'longtitle': true,
-            'theme': 'dark',
-            'onsuccess': onSuccess,
-            'onfailure': onFailure
-        });
-    }
-}
+let announce = db.collection("Announcements");
 
-async function onSuccess(googleUser) {
-
-    var profile = googleUser.getBasicProfile();
-    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-    console.log('Full Name: ' + profile.getName());
-    console.log('Given Name: ' + profile.getGivenName());
-    console.log('Family Name: ' + profile.getFamilyName());
-    console.log("Image URL: " + profile.getImageUrl());
-    console.log("Email: " + profile.getEmail());
-
-    // The ID token you need to pass to your backend:
-    var id_token = googleUser.getAuthResponse().id_token;
-    console.log("ID Token: " + id_token);
-
-    let options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        mode: 'cors',
-        body: JSON.stringify({
-            token: id_token,
-            signingwithgoogle: true,
-            status: "sent"
-        }),
-    }
-
-    let returned = await fetch("https://gunnpeepsback.glitch.me/user-sign-in", options);
-    let data = await returned.json();
-    console.log(data);
-    if (data.signedIn) {
-        globals.signedIn = true;
-        globals.id_token = id_token;
-        globals.name = data.user.name;
-        globals.email = profile.getEmail();
-        globals.pfp = profile.getImageUrl();
-        globals.atname = data.user.atname;
-        globals.ssid = data.user.ssid;
-        globals.announcementsallowed = data.user.announcementsallowed;
-        globals.createForumsAllowed = data.user.createForumsAllowed;
-    } else {
-        window.location.href = "/GoogleSignUp/"
-    }
-
-}
-
-function onFailure(error) {
-    console.log(error);
-}
-
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        console.log('User signed out.');
-    });
-}
 $(() => {
 
 
     let resetAnnounce = async function() {
         if (globals.signedIn) {
-            let returned = await fetch("https://gunnpeepsback.glitch.me/announcements");
-            let announcements = await returned.json();
-            announcements.sort(globals.sort);
-
             let wrapper = $("#announcements-content-div");
             wrapper.empty();
-
-            for (let a of announcements) {
-
-                let currMsg = $("<div>").addClass("message").attr("data-msgid", a._id);
-                let t = new Date(a.timestamp);
-
-                currMsg.html(
-                    `<div class="user-icon-wrapper">
-                    <img class="pfp" src="${a.imgurl}" alt="">
-                </div>
-                <div class="smoltri"></div>
-                <div class="message-content-wrapper">
-                    <div class="message-user">
-                        <span class="message-username">${a.name}</span> 
-                        <span class="message-userat" ${globals.atnameshown ? "" : "hidden"}>${a.atname}</span> 
-                        <span class="message-forum" ${globals.forumshown ? "" : "hidden"}>Announcements</span>
-                        <span class="message-time updating-time" data-timestamp="${a.timestamp}">${formatPastTime(t)}</span>
-                    </div>
-                    <div class="message-content ${globals.spacing}-content">
-                        ${a.post}
-                    </div>
-                </div>`);
-                wrapper.prepend(currMsg);
-            }
-
+            
+            getAnnounce();
 
             return true;
         }
@@ -125,40 +31,95 @@ $(() => {
     }
 
     let getAnnounce = async function () {
-        console.trace("Get Announce")
+
         if (globals.signedIn) {
-            let returned = await fetch("https://gunnpeepsback.glitch.me/announcements");
-            let announcements = await returned.json();
-            announcements.sort(globals.sort);
-            
+
+            let query = await announce.get();
+
+            query.forEach(doc => {
+                // console.log(doc.id, "=>", doc.data())
+            })
+
             let wrapper = $("#announcements-content-div");
-            /*wrapper.empty();*/
 
-            for(let a of announcements){
+            let announcements = [];            
 
-                if($(`.message[data-msgid="${a._id}"]`).length > 0){
+            query.forEach(async doc => {
+                announcements.push(doc);
+            });
+
+            let queriedUsers = { };
+            let allPromises = [];
+
+            for(let doc of announcements){
+                if (doc.id === "Permissions") {
                     continue;
                 }
-                let currMsg = $("<div>").addClass("message").attr("data-msgid",a._id);
-                let t = new Date(a.timestamp);
 
-                currMsg.html(
-                `<div class="user-icon-wrapper">
-                    <img class="pfp" src="${a.imgurl}" alt="">
-                </div>
-                <div class="smoltri"></div>
-                <div class="message-content-wrapper">
-                    <div class="message-user">
-                        <span class="message-username">${a.name}</span> 
-                        <span class="message-userat" ${globals.atnameshown ? "" : "hidden"}>${a.atname}</span> 
-                        <span class="message-forum" ${globals.forumshown ? "" : "hidden"}>Announcements</span>
-                        <span class="message-time updating-time" data-timestamp="${a.timestamp}">${formatPastTime( t )}</span>
+                let data = doc.data();
+
+                if ($(`.message[data-msgid="${doc.id}"]`).length === 0) {
+                    let UID = data.User;
+
+                    if(!queriedUsers[UID]){
+                        let userPublicDataRef = db.collection(`Users/${UID}/Public`);
+                        queriedUsers[UID] = await userPublicDataRef.get();
+                        allPromises.push(queriedUsers[UID]);
+                    }
+                    
+                }
+            }
+
+            await Promise.all(allPromises);
+
+            announcements.sort(globals.sort);
+
+            for(let doc of announcements){
+                if (doc.id === "Permissions") {
+                    continue;
+                }
+
+                let data = doc.data();
+                // console.log(data);
+
+                if ($(`.message[data-msgid="${doc.id}"]`).length === 0) {
+                    let currMsg = $("<div>").addClass("message").attr("data-msgid", doc.id);
+
+                    let UID = data.User;
+
+                    let userPublicData = queriedUsers[UID]
+
+                    let userInfo = {};
+
+                    userPublicData.forEach(doc => {
+                        if (doc.id == "UserInfo") {
+                            userInfo = doc.data();
+                            // console.log(userInfo);
+                        }
+                    })
+
+                    // console.log(data.Timestamp)
+                    let t = new Date(parseInt(data.Timestamp));
+
+                    currMsg.html(
+                        `<div class="user-icon-wrapper">
+                        <img class="pfp" src="${userInfo.PFPURL}" alt="">
                     </div>
-                    <div class="message-content ${globals.spacing}-content">
-                        ${a.post}
-                    </div>
-                </div>`);
-                wrapper.prepend(currMsg);
+                    <div class="smoltri"></div>
+                    <div class="message-content-wrapper">
+                        <div class="message-user">
+                            <span class="message-username">${userInfo.FirstName + " " + userInfo.LastName}</span> 
+                            <span class="message-userat" ${globals.atnameshown ? "" : "hidden"}>${userInfo.AtName}</span> 
+                            <span class="message-forum" ${globals.forumshown ? "" : "hidden"}>Announcements</span>
+                            <span class="message-time updating-time" data-timestamp="${data.Timestamp}">${ formatPastTime(t) }</span>
+                        </div>
+                        <div class="message-content ${globals.spacing}-content">
+                            ${data.Post}
+                        </div>
+                    </div>`);
+                    wrapper.prepend(currMsg);
+                }
+
             }
 
 
@@ -188,11 +149,11 @@ $(() => {
 
         $("#sort-by").change(() => {
             if($("#sort-by").val() === "time-inc"){
-                globals.sort = (a,b) => {return a.timestamp - b.timestamp};
+                globals.sort = (a,b) => {return a.data().Timestamp - b.data().Timestamp};
                 resetAnnounce();
             }
             else if ($("#sort-by").val() === "time-dec") {
-                globals.sort = (a, b) => { return b.timestamp - a.timestamp };
+                globals.sort = (a, b) => { return b.data().timestamp - a.data().timestamp };
                 resetAnnounce();
             }
         })
@@ -285,7 +246,7 @@ $(() => {
 
     let formatPastTime = function(date){
         let curr = new Date( Date.now() - date.getTime() );
-        console.log(curr.getMonth());
+        // console.log(curr.getMonth());
         if (curr.getFullYear() === 1969 || curr.getFullYear() === 1970) {
             if(curr.getMonth() === 11 || curr.getMonth() === 0){
                 if(curr.getDate() === 31){
@@ -339,37 +300,55 @@ $(() => {
             
         });
 
+        $(".post-content").on('keypress', (e) => {
+            if(e.which === 13 && !e.shiftKey){
+                $(".post-post-button").click();
+                e.preventDefault();
+            }
+        })
+
         $(".post-post-button").click(async () => {
             if (globals.signedIn) {
-                let options = {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        token: globals.id_token,
-                        post: $(".post-content").html(),
-                        signingwithgoogle: true,
-                        status: "sent"
-                    }),
+                // let options = {
+                //     method: "POST",
+                //     headers: {
+                //         "Content-Type": "application/json"
+                //     },
+                //     body: JSON.stringify({
+                //         token: globals.id_token,
+                //         post: $(".post-content").html(),
+                //         signingwithgoogle: true,
+                //         status: "sent"
+                //     }),
                     
-                }
+                // }
 
-                let returned = await fetch("https://gunnpeepsback.glitch.me/announcements", options);
-                returned = await returned.json();
-                console.log(returned);
-                if(returned.success){
-                    $(".post-content").empty();
-                    await getAnnounce();
-                }
+                // let returned = await fetch("https://gunnpeepsback.glitch.me/announcements", options);
+                // returned = await returned.json();
+                // console.log(returned);
+                // if(returned.success){
+                //     $(".post-content").empty();
+                //     await getAnnounce();
+                // }
+
+                await announce.add({
+                    Post: $(".post-content").html(),
+                    Timestamp: Date.now(),
+                    User: firebase.auth().currentUser.uid
+                })
+
+                $(".post-content").empty();
+
+                await getAnnounce();
+
             }
         })
 
         await getAnnounce();
 
-        setInterval(async () => {
-            await getAnnounce();
-        }, 1500);
+        // setInterval(async () => {
+        //     await getAnnounce();
+        // }, 1500);
     }
 
     let curr = setInterval(async () => {

@@ -30,10 +30,13 @@
     <link rel="stylesheet" type="text/css" href="/CSS/navbar.css">
     <link rel="stylesheet" type="text/css" href="./CSS-announcements/announcements.css">
 
-    <!-- Metas -->
-    <!--meta name="google-signin-scope" content="profile email"-->
-    <meta name="google-signin-client_id"
-        content="89861449366-vs15a690emufecfurb11275vb9e31h63.apps.googleusercontent.com">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
 
     <script>
 
@@ -51,6 +54,7 @@
 
     <!-- JS -->
 <!--     <script src="/JS/google-config.js"></script> -->
+    <script src="/JS/google-config.js"></script>
     <script src="./JS-announcements/announcements-config.js"></script>
     <script src="/JS/timed.js"></script>
     <script src="/JS/gradient.js"></script>
@@ -94,10 +98,17 @@
                     </div>
                 </a>
             </li>
+            <li>
+                <a href="" id="signin">
+                    <div hidden class="nav-option"><img id="sign-in-google-img"
+                            src="/Images/GoogleButtons/btn_google_signin_light_normal_web@2x.png">
+                    </div>
+                </a>
+            </li>
         </ul>
     </div>
 
-    <div id="sign-in-google"></div>
+    <!-- <div id="sign-in-google"></div> -->
     <!-- TO DO: MAKE SIGN IN DROPDOWN
     div id="sign-in">
     <div id="sign-in-regular">Sign In</div>

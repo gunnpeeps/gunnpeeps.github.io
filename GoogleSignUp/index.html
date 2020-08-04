@@ -32,8 +32,8 @@
 
     <!-- Metas -->
     <!--meta name="google-signin-scope" content="profile email"-->
-    <meta name="google-signin-client_id"
-        content="89861449366-vs15a690emufecfurb11275vb9e31h63.apps.googleusercontent.com">
+    <!-- <meta name="google-signin-client_id" -->
+        <!-- content="89861449366-vs15a690emufecfurb11275/b9e31h63.apps.googleusercontent.com"> -->
 
     <script>
 
@@ -43,13 +43,22 @@
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Google API -->
-    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <!-- <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script> -->
     <!-- Vue -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
     <!-- Vuetify -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.4/vuetify.min.js"></script>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+
     <!-- JS -->
+    <script src="/JS/google-config.js"></script>
     <script src="./JS-GSU/GSU.js"></script>
     <script src="/JS/timed.js"></script>
     <script src="/JS/gradient.js"></script>
@@ -91,6 +100,13 @@
                     </div>
                 </a>
             </li>
+            <li>
+                <a href="" id="signin">
+                    <div hidden class="nav-option"><img id="sign-in-google-img"
+                            src="/Images/GoogleButtons/btn_google_signin_light_normal_web@2x.png">
+                    </div>
+                </a>
+            </li>
         </ul>
     </div>
 
@@ -101,9 +117,10 @@
         </a>
     </div>
 
-    <div id="sign-in-google"></div>
-    <div id="sign-out-google" onclick="signOutCurr()">Sign Up With Other Account</div>
+    <!-- <div id="sign-in-google"></div>
+    <div id="sign-out-google" onclick="signOutCurr()">Sign Up With Other Account</div> -->
 
+    
     <div id="sign-up-form">
         <h1>Signing Up with Google</h1>
         <div class="form-input">
@@ -123,14 +140,14 @@
             <span>Username (Your unique @address)</span>
             <input id="atname" type="text" placeholder="testuser0123456789">
         </div>
-        <div class="form-input">
+        <!-- <div class="form-input">
             <span>Password</span>
             <input id="password" type="password" placeholder="password1234">
         </div>
         <div class="form-input">
             <span>Password (Verify)</span>
             <input id="password-verify" type="password" placeholder="password1234">
-        </div>
+        </div> -->
         <button id="submit">Submit</button>
         <div id="footer"></div>
     </div>

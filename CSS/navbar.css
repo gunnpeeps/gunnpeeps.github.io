@@ -32,6 +32,12 @@
   text-decoration: underline;
 }
 
+#sign-in-google-img {
+  height: 60px;
+  display: inline;
+  vertical-align: middle;
+}
+
 /* links for option divs */
 .nav-list>li>a {
   text-decoration: none;
