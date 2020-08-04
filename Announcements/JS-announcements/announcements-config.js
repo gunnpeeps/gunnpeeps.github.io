@@ -355,6 +355,10 @@ $(() => {
         if(globals.signedIn){
             clearInterval(curr);
             await onLoad();
+
+            announce.onSnapshot(() => {
+                getAnnounce();
+            })
         }
     }, 1500);
 
