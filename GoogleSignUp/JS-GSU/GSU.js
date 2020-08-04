@@ -99,7 +99,7 @@ $(() => {
             addError("email-address", "You've already signed in with this account. Return to the main page and you'll automatically be signed in.");
         } else {
             let userref = db.collection(`Users/${globals.uid}/Public`).doc(`UserInfo`);
-            userref.set({
+            await userref.set({
                 AtName: $("#atname").val(),
                 FirstName: $("#fn").val(),
                 LastName: $("#ln").val(),
