@@ -18,6 +18,9 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 let db = firebase.firestore();
+
+let rt = firebase.database();
+
 // let rtdb = firebase.database();
 let auth = firebase.auth();
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -29,6 +32,11 @@ firebase.auth().onAuthStateChanged(async function (user) {
         return;
     }
 
+    // let stuff = rt.ref("Users/users");
+    // console.log((await stuff.once('value')).val())
+
+    // console.log((await stuff.once('value')).exists());
+
     console.log(user);
     console.log(user.displayName);
 
@@ -38,11 +46,14 @@ firebase.auth().onAuthStateChanged(async function (user) {
     globals.pfp = user.photoURL;
     globals.uid = user.uid;
 
-    let userref = db.doc(`Users/${user.uid}/Public/UserInfo`);
-    let userdata = await userref.get();
-    if(userdata.exists){
-        console.log(userdata.data());
-        globals.atname = userdata.data().AtName;
+    // let userref = db.doc(`Users/${user.uid}/Public/UserInfo`);
+    // let userdata = await userref.get();
+
+    let userref = await rt.ref(`Users/${user.uid}`).once("value");
+
+    if(userref.exists()){
+        console.log(userref.val());
+        globals.atname = userref.val().AtName;
         if (window.location.href.indexOf("GoogleSignUp") !== -1) {
             window.location.href = "/"
         }

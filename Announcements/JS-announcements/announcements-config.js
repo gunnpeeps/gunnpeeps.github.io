@@ -5,7 +5,7 @@ globals = {
     buttonrendered: false,
     posting: false,
     sort: (a, b) => {
-        return a.data().Timestamp - b.data().Timestamp
+        return a.Timestamp - b.Timestamp
     },
     spacing: "spacious",
     timeformat: "smart",
@@ -13,7 +13,8 @@ globals = {
     forumshown: true,
 }
 
-let announce = db.collection("Announcements");
+// let announce = db.collection("Announcements");
+let announceRT = rt.ref("Announcements/Docs");
 
 $(() => {
 
@@ -30,40 +31,55 @@ $(() => {
         return false;
     }
 
-    let getAnnounce = async function () {
+    let getAnnounce = async function (snapshot) {
 
         if (globals.signedIn) {
 
-            let query = await announce.get();
+            // let query = await announce.get();
 
-            query.forEach(doc => {
-                // console.log(doc.id, "=>", doc.data())
-            })
+            let queryRT;
+            if(!snapshot){
+                queryRT = await announceRT.once("value");
+                queryRT = queryRT.val();
+            }
+            else {
+                queryRT = snapshot.val();
+            }
+            
 
             let wrapper = $("#announcements-content-div");
 
-            let announcements = [];            
+            let announcements = [];
 
-            query.forEach(async doc => {
-                announcements.push(doc);
-            });
+            for (const key in queryRT) {
+                if (queryRT.hasOwnProperty(key)) {
+                    const element = queryRT[key];
+                    element.id = key;
+                    announcements.push(element);
+                }
+            }
+
+            console.log(announcements);
+
+            // announcements = [];
+
+            // query.forEach(async doc => {
+            //     announcements.push(doc);
+            // });
 
             let queriedUsers = { };
             let allPromises = [];
 
-            for(let doc of announcements){
-                if (doc.id === "Permissions") {
-                    continue;
-                }
+            for(let data of announcements){
 
-                let data = doc.data();
-
-                if ($(`.message[data-msgid="${doc.id}"]`).length === 0) {
-                    let UID = data.User;
+                if ($(`.message[data-msgid="${data.id}"]`).length === 0) {
+                    let UID = data.UID;
 
                     if(!queriedUsers[UID]){
-                        let userPublicDataRef = db.collection(`Users/${UID}/Public`);
-                        queriedUsers[UID] = await userPublicDataRef.get();
+                        // let userPublicDataRef = db.collection(`Users/${UID}/Public`);
+                        // queriedUsers[UID] = await userPublicDataRef.get();
+                        let users = rt.ref(`Users/${UID}/Public/UserInfo`);
+                        queriedUsers[UID] = (await users.once('value')).val();
                         allPromises.push(queriedUsers[UID]);
                     }
                     
@@ -72,33 +88,21 @@ $(() => {
 
             await Promise.all(allPromises);
 
+            console.log({queriedUsers})
+
             announcements.sort(globals.sort);
 
-            for(let doc of announcements){
-                if (doc.id === "Permissions") {
-                    continue;
-                }
+            for(let data of announcements){
 
-                let data = doc.data();
-                // console.log(data);
+                if ($(`.message[data-msgid="${data.id}"]`).length === 0) {
+                    let currMsg = $("<div>").addClass("message").attr("data-msgid", data.id);
 
-                if ($(`.message[data-msgid="${doc.id}"]`).length === 0) {
-                    let currMsg = $("<div>").addClass("message").attr("data-msgid", doc.id);
-
-                    let UID = data.User;
+                    let UID = data.UID;
 
                     let userPublicData = queriedUsers[UID]
 
-                    let userInfo = {};
+                    let userInfo = userPublicData;
 
-                    userPublicData.forEach(doc => {
-                        if (doc.id == "UserInfo") {
-                            userInfo = doc.data();
-                            // console.log(userInfo);
-                        }
-                    })
-
-                    // console.log(data.Timestamp)
                     let t = new Date(parseInt(data.Timestamp));
 
                     currMsg.html(
@@ -149,11 +153,11 @@ $(() => {
 
         $("#sort-by").change(() => {
             if($("#sort-by").val() === "time-inc"){
-                globals.sort = (a,b) => {return a.data().Timestamp - b.data().Timestamp};
+                globals.sort = (a,b) => {return a.Timestamp - b.Timestamp};
                 resetAnnounce();
             }
             else if ($("#sort-by").val() === "time-dec") {
-                globals.sort = (a, b) => { return b.data().timestamp - a.data().timestamp };
+                globals.sort = (a, b) => { return b.timestamp - a.timestamp };
                 resetAnnounce();
             }
         })
@@ -331,15 +335,22 @@ $(() => {
                 //     await getAnnounce();
                 // }
 
-                await announce.add({
+                let newannounceref = announceRT.push();
+
+                newannounceref.set({
                     Post: $(".post-content").html(),
                     Timestamp: Date.now(),
-                    User: firebase.auth().currentUser.uid
+                    UID: firebase.auth().currentUser.uid
+                },function(e){
+                    if(e){
+                        console.log(e);
+                    } else {
+                        $(".post-content").empty();
+                        // getAnnounce();
+                    }
                 })
 
-                $(".post-content").empty();
-
-                await getAnnounce();
+                
 
             }
         })
@@ -356,8 +367,12 @@ $(() => {
             clearInterval(curr);
             await onLoad();
 
-            announce.onSnapshot(() => {
-                getAnnounce();
+            // announce.onSnapshot(() => {
+            //     getAnnounce();
+            // })
+
+            announceRT.on('value', (snapshot) => {
+                getAnnounce(snapshot);
             })
         }
     }, 1500);

@@ -3,7 +3,9 @@
 
 #gradient-wrapper-header {
   width: 100vw;
-  height: 0.4vh;
+  height: var(--gradientStrip);
+  /* position:absolute; */
+  /* z-index:1; */
 }
 #gradient-wrapper-header-backup {
   height: 10vh;

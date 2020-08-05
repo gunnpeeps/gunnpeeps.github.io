@@ -92,21 +92,30 @@ $(() => {
             }
         }
 
-        let userref = db.collection(`Users/${globals.uid}/Public`).doc(`UserInfo`);
-        let userdata = await userref.get();
+        // let userref = db.collection(`Users/${globals.uid}/Public`).doc(`UserInfo`);
+        // let userdata = await userref.get();
 
-        if(userdata.exists){
+        let userref = rt.ref(`Users/${globals.uid}/Public/UserInfo`);
+        let userdata = await userref.once("value");
+
+        if(userdata.exists()){
             addError("email-address", "You've already signed in with this account. Return to the main page and you'll automatically be signed in.");
         } else {
-            let userref = db.collection(`Users/${globals.uid}/Public`).doc(`UserInfo`);
+            // let userref = db.collection(`Users/${globals.uid}/Public`).doc(`UserInfo`);
+            let userref = rt.ref(`Users/${globals.uid}/Public/UserInfo`);
             await userref.set({
                 AtName: $("#atname").val(),
                 FirstName: $("#fn").val(),
                 LastName: $("#ln").val(),
                 PFPURL: globals.pfp
+            }, function(error){
+                if(error){
+                    addError("email-address",error);
+                } else {
+                    window.location.href = "/";
+                }
             })
 
-            window.location.href = "/";
             
         }
 

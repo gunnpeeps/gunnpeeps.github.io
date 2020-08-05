@@ -15,8 +15,9 @@
   --etonbluergb: 159, 209, 159;
   --etonblue: rgb(var(--etonbluergb));
   /* lengths */
-  --navh: 10vh;
+  --navh: 75px;
   --navfs: 1.5rem;
+  --gradientStrip: 0.4vh;
 }
 
 body {

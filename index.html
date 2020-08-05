@@ -30,11 +30,6 @@
   <link rel="stylesheet" type="text/css" href="CSS-index/slider.css">
   <link rel="stylesheet" type="text/css" href="CSS/navbar.css">
 
-  <!-- Metas -->
-  <!--meta name="google-signin-scope" content="profile email"-->
-  <!-- <meta name="google-signin-client_id"
-    content="89861449366-vs15a690emufecfurb11275vb9e31h63.apps.googleusercontent.com"> -->
-
   <script>
 
   </script>
@@ -55,6 +50,7 @@
   <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
 
   <!-- JS -->
@@ -75,9 +71,16 @@
 
   <div class="nav-bar">
 
+    <div id="header-logo-div">
+      <a href="./"><img id="header-logo" src="/Images/Logos/WhiteLogo.png" alt="GP"></a>
+      <a href="/">
+        <div id="header-gunnpeeps">Gunn Peeps</div>
+      </a>
+    </div>
+
     <ul class="nav-list">
       <li>
-        <div class="nav-option menu-icon-wrapper">
+        <div class=" menu-icon-wrapper">
           <img id="menu-icon" src="Images/Icons/Menu.png" alt="Menu">
         </div>
       </li>
@@ -113,7 +116,9 @@
         </a>
       </li>
     </ul>
+
   </div>
+  
 
   <!-- TO DO: MAKE SIGN IN DROPDOWN
     div id="sign-in">
@@ -124,15 +129,10 @@
   </div-->
 
 
-  <div id="header-logo-div">
-
-    <a href="./"><img id="header-logo" src="/Images/Logos/WhiteLogo.png" alt="GP"></a>
-    <a href="/">
-      <div id="header-gunnpeeps">Gunn Peeps</div>
-    </a>
+  <div id="all-options">
+    
   </div>
 
-  
   <div class="slider-container">
     <div class="slider slider-1">
       <img src="./Images/Slider Images/ConcertPhoto1.jpg" alt="Slide 0" />
@@ -148,7 +148,7 @@
       <div class="subtitle">where time is wasted</div>
     </div>
   </div>
-  
+
 
   <img class="slider-arrow left-arr" src="Images/Icons/Arr.svg" alt="Left Arrow">
   <img class="slider-arrow right-arr" src="Images/Icons/Arr.svg" alt="Right Arrow">
@@ -158,6 +158,8 @@
     <div id="gradient-wrapper-heading-backup" class="gradient-backup"></div>
     <h1 id="about-heading" class="mainHeader">About</h1>
   </div>
+
+  
   
 
 </body>
