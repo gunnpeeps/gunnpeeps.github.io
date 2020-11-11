@@ -1,4 +1,3 @@
-#gunnpeeps.github.io
-Gunnpeeps hopefully will be a quick website for our friend group. haha github go brrrr
+# Gunnpeeps
 
-
+This website is disabled and archived. It no longer is functional. It formerly was a quick test chat app for gunn peeps.
